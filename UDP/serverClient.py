@@ -24,7 +24,7 @@ def path_handler(unused_addr, args, path):
 
     msg_from_client = read_txt(path)
     bytes_to_send = str.encode(msg_from_client)
-    server_address_port = ("172.30.170.219", 20001)
+    server_address_port = ("127.0.0.1", 20001)
     buffer_size = 1024
 
     # Create a UDP socket at client side
