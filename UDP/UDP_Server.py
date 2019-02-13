@@ -3,7 +3,6 @@ import socket
 import pymysql
 from random import randint
 
-
 localIP = "127.0.0.1"
 localPort = 20001
 bufferSize = 1024
@@ -19,9 +18,9 @@ UDPServerSocket.bind((localIP, localPort))
 
 print("UDP server up and listening")
 
-#SELECT DISTINCT `ID_CANCION` FROM `canciones`, `databeats` AS B1, `databeats` AS B2 WHERE (`ID_CANCION` = B1.`FK_ID_CANCION`) AND (`REPETICIONES`<4)
-def save_database(query):
 
+# SELECT DISTINCT `ID_CANCION` FROM `canciones`, `databeats` AS B1, `databeats` AS B2 WHERE (`ID_CANCION` = B1.`FK_ID_CANCION`) AND (`REPETICIONES`<4)
+def save_database(query):
     db = pymysql.connect("127.0.0.1", "admin", "1539321441", "beatsalsa")
 
     cursor = db.cursor()
@@ -90,10 +89,10 @@ def select_songs(idUser):
             sql = "SELECT * FROM `canciones` WHERE `REPETICIONES`<3"
             cursor.execute(sql)
             query = cursor.fetchall()
-            print(str(len(query))+"tamaño cons")
+            print(str(len(query)) + "tamaño cons")
             while end:
 
-                x = randint(0, len(query)-1)
+                x = randint(0, len(query) - 1)
 
                 row = query[x]
                 id = row[0]
@@ -102,7 +101,7 @@ def select_songs(idUser):
 
                 if repetition == 0:
 
-                    #se queda con esa canción y actualiza los datos
+                    # se queda con esa canción y actualiza los datos
                     repetition += 1
                     update_usr_song(id, idUser, repetition)
 
@@ -114,8 +113,8 @@ def select_songs(idUser):
 
                     if users[0] != idUser:
                         repetition += 1
-                        aux = users[0]+","+idUser
-                        update_usr_song(id,aux, repetition)
+                        aux = users[0] + "," + idUser
+                        update_usr_song(id, aux, repetition)
                         print ("La cancion se encontro con id {0} queda asignada para {1}".format(id, idUser))
                         end = False
                         return str(id)
@@ -139,8 +138,8 @@ def select_songs(idUser):
         connection.close()
 
 
-
 # Listen for incoming datagrams
+
 
 while True:
 
@@ -166,7 +165,19 @@ while True:
     elif text[:4] == "Save":
 
         print("Saving the Beats into DB")
+
+        aux = text.split("|")
+
+        data = aux[1].split(";")
+
+        id_cancion = data[0]
+        id_usuario = data[1]
+        beats = data[2]
+        delay = data[3]
+
+        insert_beat(id_cancion, id_usuario, beats, delay)
+        msg = "Beats from song {0}, usr {1} saved ".format(id_cancion,id_usuario)
         # Sending a reply to client
-        UDPServerSocket.sendto(bytesToSend, address)
+        UDPServerSocket.sendto(str.encode(msg), address)
     else:
         print("-------------------------ERROR MSG----------------------------- ")

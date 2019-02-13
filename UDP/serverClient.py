@@ -17,9 +17,10 @@ from pythonosc import osc_server
 
 
 def save_handler(unused_addr, args, save):
-    print("[{0}] ~ {1}".format(args[0], path))
+    print("[{0}] ~ {1}".format(args[0], save))
 
-    bytes_to_send = str.encode(save)
+    msg_from_client = "Save|{0}".format(save)
+    bytes_to_send = str.encode(msg_from_client)
     server_address_port = ("127.0.0.1", 20001)
     buffer_size = 1024
 
