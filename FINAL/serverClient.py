@@ -44,7 +44,7 @@ def update_usr_song(idSong, idUsr, repeticion):
     try:
         with connection.cursor() as cursor:
             # Create a new record
-            sql = "UPDATE `canciones` SET `REPETICIONES`=%s,`USUARIOS`=%s WHERE `ID_CANCION`=%s"
+            sql = "UPDATE `canciones` SET `REPETICIONES`=%s,`USUARIO_1`=%s WHERE `ID_CANCION`=%s"
             cursor.execute(sql, (repeticion, idUsr, idSong))
 
         # connection is not autocommit by default. So you must commit to save
