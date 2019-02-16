@@ -11,6 +11,117 @@ from random import randint
 from pythonosc import dispatcher
 from pythonosc import osc_server
 
+import pymysql
+
+
+
+def insert_beat(id_cancion, id_usuario, beats, delay):
+    connection = pymysql.connect("127.0.0.1",
+                                 "admin",
+                                 "1539321441",
+                                 "beatsalsa", )
+
+    try:
+        with connection.cursor() as cursor:
+            # Create a new record
+            sql = "INSERT INTO `databeats` (`FK_ID_CANCION`, `FK_CEDULA_USUARIO`, `BEATS`, `DELAY`, `FECHA`) VALUES (%s, %s, %s, %s, CURRENT_TIMESTAMP)"
+            cursor.execute(sql, (id_cancion, id_usuario, beats, delay))
+
+        # connection is not autocommit by default. So you must commit to save
+        # your changes.
+        connection.commit()
+
+    finally:
+        connection.close()
+
+
+def update_usr_song(idSong, idUsr, repeticion):
+    connection = pymysql.connect("127.0.0.1",
+                                 "admin",
+                                 "1539321441",
+                                 "beatsalsa", )
+
+    try:
+        with connection.cursor() as cursor:
+            # Create a new record
+            sql = "UPDATE `canciones` SET `REPETICIONES`=%s,`USUARIOS`=%s WHERE `ID_CANCION`=%s"
+            cursor.execute(sql, (repeticion, idUsr, idSong))
+
+        # connection is not autocommit by default. So you must commit to save
+        # your changes.
+        connection.commit()
+
+    finally:
+        connection.close()
+
+
+def select_songs(idUser):
+    connection = pymysql.connect("127.0.0.1",
+                                 "admin",
+                                 "1539321441",
+                                 "beatsalsa", )
+
+    try:
+        with connection.cursor() as cursor:
+            end = True
+
+            # Create a new record
+            sql = "SELECT * FROM `canciones` WHERE `REPETICIONES`<3"
+            cursor.execute(sql)
+            query = cursor.fetchall()
+            print(str(len(query)) + "tamaño cons")
+            while end:
+
+                x = randint(0, len(query) - 1)
+
+                row = query[x]
+                id = row[0]
+                repetition = row[2]
+                users = row[3].split(",")
+
+                if repetition == 0:
+
+                    # se queda con esa canción y actualiza los datos
+                    repetition += 1
+                    update_usr_song(id, idUser, repetition)
+
+                    print("La cancion se encontro con id {0} queda asignada para {1}".format(id, idUser))
+                    end = False
+                    return str(id)
+
+                elif repetition == 1:
+
+                    if users[0] != idUser:
+                        repetition += 1
+                        aux = users[0] + "," + idUser
+                        update_usr_song(id, aux, repetition)
+                        print ("La cancion se encontro con id {0} queda asignada para {1}".format(id, idUser))
+                        end = False
+                        return str(id)
+                    else:
+                        print("Descartada cancion id {0}".format(id))
+
+                elif repetition == 2:
+
+                    if (users[0] != idUser) and (users[1] != idUser):
+                        repetition += 1
+                        aux = users[0] + "," + users[1] + "," + idUser
+                        update_usr_song(id, aux, repetition)
+                        print ("La cancion se encontro con id {0} queda asignada para {1}".format(id, idUser))
+                        end = False
+                        return str(id)
+                    else:
+                        print("Descartada cancion id {0}".format(id))
+
+
+    finally:
+        connection.close()
+
+
+
+
+
+
 # Al parametro save tiene que entrar el idCancion;idUsuario;Beats;Delay
 # Donde los beats deben ir separados por comas
 # Uun ejemplo 1;2;0.332,5.336,7.5552;0.5
@@ -19,21 +130,15 @@ from pythonosc import osc_server
 def save_handler(unused_addr, args, save):
     print("[{0}] ~ {1}".format(args[0], save))
 
-    msg_from_client = "Save|{0}".format(save)
-    bytes_to_send = str.encode(msg_from_client)
-    server_address_port = ("127.0.0.1", 20001)
-    buffer_size = 16384
+    data = save.split(";")
 
-    # Create a UDP socket at client side
-    udp_client_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+    id_cancion = data[0]
+    id_usuario = data[1]
+    beats = data[2]
+    delay = data[3]
 
-    # Send to server using created UDP socket
-    udp_client_socket.sendto(bytes_to_send, server_address_port)
-
-    msg_from_server = udp_client_socket.recvfrom(buffer_size)
-
-    msg = "Message from Server {}".format(msg_from_server[0])
-
+    insert_beat(id_cancion, id_usuario, beats, delay)
+    msg = "Beats from song {0}, usr {1} saved ".format(id_cancion, id_usuario)
     print(msg)
 
     return
@@ -42,22 +147,7 @@ def save_handler(unused_addr, args, save):
 def start_handler(unused_addr, args, msg):
     print("[{0}] ~ {1}".format(args[0], msg))
 
-    # Read the .txt using the path addressed by the client
-
-    msg_from_client = "Ready,{0}".format(msg)
-    bytes_to_send = str.encode(msg_from_client)
-    server_address_port = ("127.0.0.1", 20001)
-    buffer_size = 16384
-
-    # Create a UDP socket at client side
-    udp_client_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-
-    # Send to server using created UDP socket
-    udp_client_socket.sendto(bytes_to_send, server_address_port)
-
-    msg_from_server = udp_client_socket.recvfrom(buffer_size)
-
-    msg = "Message from Server {}".format(msg_from_server[0])
+    select_songs(msg)
 
     print(msg)
 
