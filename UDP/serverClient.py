@@ -22,7 +22,7 @@ def save_handler(unused_addr, args, save):
     msg_from_client = "Save|{0}".format(save)
     bytes_to_send = str.encode(msg_from_client)
     server_address_port = ("127.0.0.1", 20001)
-    buffer_size = 1024
+    buffer_size = 16384
 
     # Create a UDP socket at client side
     udp_client_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
@@ -47,7 +47,7 @@ def start_handler(unused_addr, args, msg):
     msg_from_client = "Ready,{0}".format(msg)
     bytes_to_send = str.encode(msg_from_client)
     server_address_port = ("127.0.0.1", 20001)
-    buffer_size = 1024
+    buffer_size = 16384
 
     # Create a UDP socket at client side
     udp_client_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)

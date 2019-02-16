@@ -5,7 +5,7 @@ from random import randint
 
 localIP = "127.0.0.1"
 localPort = 20001
-bufferSize = 1024
+bufferSize = 16384
 
 msgFromServer = "Hello UDP Client"
 bytesToSend = str.encode(msgFromServer)

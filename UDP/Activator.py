@@ -4,11 +4,23 @@ This program sends 10 random values between 0.0 and 1.0 to the /filter address,
 waiting for 1 seconds between each value.
 """
 import argparse
-from random import randint
+import random
 import time
 
 from pythonosc import osc_message_builder
 from pythonosc import udp_client
+
+
+def create_rnd_beats(n):
+    sum = 0
+    cad = ""
+    for x in range(0, n-1):
+        num = random.random()
+        sum += num
+        cad += str(num)[:15]+","
+
+    return cad, sum
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -20,12 +32,15 @@ if __name__ == "__main__":
 
     client = udp_client.SimpleUDPClient(args.ip, args.port)
 
-    x = randint(1, 10)
+    x = random.randint(1, 10)
  #   client.send_message("/start", str(x))
 
-    rnd_song = randint(1, 10)
-    rnd_usr = randint(1, 10)
-    example = "{0};{1};0.332,5.336,7.5552;0.5".format(rnd_song, rnd_usr)
+    rnd_song = random.randint(1, 10)
+    rnd_usr = random.randint(1, 10)
+    beats, sum = create_rnd_beats(500)
+    print("Suma beats = {0}".format(sum))
+    print("Beats : {0}".format(beats))
+    example = "{0};{1};{2};0.5".format(rnd_song, rnd_usr,beats)
     client.send_message("/save", example)
 
     # time.sleep(1)
