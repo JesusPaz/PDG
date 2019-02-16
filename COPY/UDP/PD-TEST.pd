@@ -1,0 +1,14 @@
+#N canvas 676 0 681 676 10;
+#X declare -lib mrpeach;
+#X obj 125 65 import mrpeach;
+#X msg 227 204 disconnect;
+#X floatatom 241 271 5 0 0 0 - - -;
+#X msg 243 311 send /start \$1;
+#X obj 247 362 packOSC;
+#X obj 141 422 udpsend;
+#X msg 141 157 connect localhost 5005;
+#X connect 1 0 5 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 6 0 5 0;
