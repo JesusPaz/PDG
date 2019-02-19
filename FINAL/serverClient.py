@@ -37,6 +37,13 @@ def insert_beat(id_cancion, id_usuario, beats, delay):
         connection.close()
 
 
+def sum_beats(cad):
+
+    arr = cad.split(";")
+
+    return 0
+
+
 def update_usr_song(idSong, idUsr, repeticion, numUsr):
     connection = pymysql.connect("127.0.0.1",
                                  "admin",
@@ -133,11 +140,14 @@ def save_handler(unused_addr, args, save):
     id_usuario = data[1]
     beats = data[2]
     delay = data[3]
+    sum_recv = data[4]
 
-    insert_beat(id_cancion, id_usuario, beats, delay)
-    msg = "Beats from song {0}, usr {1} saved ".format(id_cancion, id_usuario)
-    print(msg)
-
+    if str(sum_recv) == str(sum_beats(beats)):
+        insert_beat(id_cancion, id_usuario, beats, delay)
+        msg = "Beats from song {0}, usr {1} saved ".format(id_cancion, id_usuario)
+        print(msg)
+    else:
+        print("--------------------------ERROR: Check Sum Wrong -------------------------")
     return
 
 

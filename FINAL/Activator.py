@@ -22,6 +22,12 @@ def create_rnd_beats(n):
     return cad, sum
 
 
+def sum_beats(cad):
+    arr = cad.split(";")
+   # aux = sum(arr)
+    return 0
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--ip", default="127.0.0.1",
@@ -33,7 +39,7 @@ if __name__ == "__main__":
     client = udp_client.SimpleUDPClient(args.ip, args.port)
 
     x = random.randint(1, 10)
-    client.send_message("/start", str(x))
+    #client.send_message("/start", str(x))
 
     print("start {}".format(x))
 
@@ -42,7 +48,7 @@ if __name__ == "__main__":
     beats, sum = create_rnd_beats(500)
     #aprint("Suma beats = {0}".format(sum))
    # print("Beats : {0}".format(beats))
-    example = "{0};{1};{2};0.5".format(rnd_song, rnd_usr,beats)
-    #client.send_message("/save", example)
+    example = "{0};{1};{2};0.5;{3}".format(rnd_song, rnd_usr, beats, sum_beats(beats))
+    client.send_message("/save", example)
 
     # time.sleep(1)
