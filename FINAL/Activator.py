@@ -33,16 +33,16 @@ if __name__ == "__main__":
     client = udp_client.SimpleUDPClient(args.ip, args.port)
 
     x = random.randint(1, 10)
-    #client.send_message("/start", str(x))
+    client.send_message("/start", str(x))
 
     print("start {}".format(x))
 
     rnd_song = random.randint(1, 10)
     rnd_usr = random.randint(1, 10)
     beats, sum = create_rnd_beats(500)
-    print("Suma beats = {0}".format(sum))
-    print("Beats : {0}".format(beats))
+    #aprint("Suma beats = {0}".format(sum))
+   # print("Beats : {0}".format(beats))
     example = "{0};{1};{2};0.5".format(rnd_song, rnd_usr,beats)
-    client.send_message("/save", example)
+    #client.send_message("/save", example)
 
     # time.sleep(1)
