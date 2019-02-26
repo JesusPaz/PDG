@@ -4,15 +4,20 @@ This program listens to several addresses, and prints some information about
 received packets.
 """
 # Para formatear tabla canciones:
-# UPDATE `canciones` SET `REPETICIONES`=0,`USUARIO_1`=0,`FECHA_1`="",`USUARIO_2`=0,`FECHA_2`="",`USUARIO_3`=0,`FECHA_3`=""
-
+# UPDATE `despacho_cancion` SET `REPETICIONES`=0,`USUARIO_1`=0,`FECHA_1`="",`USUARIO_2`=0,`FECHA_2`="",`USUARIO_3`=0,`FECHA_3`=""
+# -*- coding: utf-8 -*-
+#!/usr/bin/python
 import argparse
 import math
 import socket
 from random import randint
+from datetime import datetime, date, time, timedelta
 
 from pythonosc import dispatcher
 from pythonosc import osc_server
+
+from pythonosc import osc_message_builder
+from pythonosc import udp_client
 
 import pymysql
 
@@ -38,7 +43,6 @@ def insert_beat(id_cancion, id_usuario, beats, delay):
 
 
 def sum_beats(cad):
-
     arr = cad.split(";")
 
     return 0
@@ -54,11 +58,11 @@ def update_usr_song(idSong, idUsr, repeticion, numUsr):
         with connection.cursor() as cursor:
             # Create a new record
             if numUsr == 1:
-                sql ="UPDATE `canciones` SET `REPETICIONES`=%s,`USUARIO_1`=%s,`FECHA_1`=CURRENT_TIMESTAMP WHERE `ID_CANCION`=%s"
+                sql = "UPDATE `despacho_cancion` SET `REPETICIONES`=%s,`USUARIO_1`=%s,`FECHA_1`=CURRENT_TIMESTAMP WHERE `ID_CANCION`=%s"
             elif numUsr == 2:
-                sql = "UPDATE `canciones` SET `REPETICIONES`=%s,`USUARIO_2`=%s,`FECHA_2`=CURRENT_TIMESTAMP WHERE `ID_CANCION`=%s"
+                sql = "UPDATE `despacho_cancion` SET `REPETICIONES`=%s,`USUARIO_2`=%s,`FECHA_2`=CURRENT_TIMESTAMP WHERE `ID_CANCION`=%s"
             elif numUsr == 3:
-                sql = "UPDATE `canciones` SET `REPETICIONES`=%s,`USUARIO_3`=%s,`FECHA_3`=CURRENT_TIMESTAMP WHERE `ID_CANCION`=%s"
+                sql = "UPDATE `despacho_cancion` SET `REPETICIONES`=%s,`USUARIO_3`=%s,`FECHA_3`=CURRENT_TIMESTAMP WHERE `ID_CANCION`=%s"
 
             cursor.execute(sql, (repeticion, idUsr, idSong))
 
@@ -70,6 +74,47 @@ def update_usr_song(idSong, idUsr, repeticion, numUsr):
         connection.close()
 
 
+def validate_user(idUser):
+    # hacer llamado a la base de datos para verificar que el cliente existe
+    # luego agregar a la lista de fechas en la bd
+
+    connection = pymysql.connect("127.0.0.1",
+                                 "admin",
+                                 "1539321441",
+                                 "beatsalsa", )
+
+    try:
+        with connection.cursor() as cursor:
+
+            sql1 = "SELECT `FECHAS_VALIDACION` FROM `usuarios` WHERE `CEDULA_USUARIO`=%s"
+            cursor.execute(sql1, idUser)
+            query = cursor.fetchone()
+            ahora = datetime.now().utcnow()
+            act_date = str(ahora.year)+"-"+str(ahora.month)+"-"+str(ahora.day)+" "+str(ahora.hour)+":"+str(ahora.minute)+":"+str(ahora.second)
+            data = ""
+            if query[0] == "":
+               # print("no date")
+                data = act_date
+            else:
+
+                for i in query:
+                    data += i + ","
+               # print("tiene")
+                data += act_date
+
+            #print("Las fechas de validacion son:")
+           # print(data)
+
+            # Create a new record
+            sql2 = "UPDATE `usuarios` SET `FECHAS_VALIDACION`=%s WHERE `CEDULA_USUARIO`= %s"
+            cursor.execute(sql2, (data, idUser))
+            connection.commit()
+        return True
+    finally:
+        connection.close()
+
+
+# falta validar usuario
 def select_songs(idUser):
     connection = pymysql.connect("127.0.0.1",
                                  "admin",
@@ -78,10 +123,11 @@ def select_songs(idUser):
 
     try:
         with connection.cursor() as cursor:
+
             end = True
 
             # Create a new record
-            sql = "SELECT * FROM `canciones` WHERE `REPETICIONES`<3"
+            sql = "SELECT * FROM `despacho_cancion` WHERE `REPETICIONES`<3"
             cursor.execute(sql)
             query = cursor.fetchall()
             print(str(len(query)) + " tamaño Query <3")
@@ -127,7 +173,6 @@ def select_songs(idUser):
         connection.close()
 
 
-
 # Al parametro save tiene que entrar el idCancion;idUsuario;Beats;Delay
 # Donde los beats deben ir separados por comas
 # Uun ejemplo 1;2;0.332,5.336,7.5552;0.5
@@ -155,25 +200,25 @@ def start_handler(unused_addr, args, msg):
     print("[{0}] ~ {1}".format(args[0], msg))
 
     idUser = int(msg)
-    select_songs(idUser)
+    validate_user(idUser)
+    song_id = select_songs(idUser)
 
-    #print(msg)
+    # print(msg)
 
     # Send song id to client (Pure Data)
 
-   # client = udp_client.SimpleUDPClient("127.0.0.1", 20002)
-    #client.send_message("/songid", msg_from_server[0])
+   # client = udp_client.SimpleUDPClient("127.0.0.1", 2002)
+   # client.send_message("/songid", song_id)
 
     return
 
 
 if __name__ == "__main__":
-
     dispatcher = dispatcher.Dispatcher()
 
-    dispatcher.map("/save", save_handler, "Save ")
+    dispatcher.map("/save", save_handler, "Save")
     dispatcher.map("/start", start_handler, "Ready")
 
-    server = osc_server.ThreadingOSCUDPServer(("127.0.0.1", 5005), dispatcher)
+    server = osc_server.ThreadingOSCUDPServer(("192.168.100.130", 5005), dispatcher)
     print("ServerOSC in Client Ready on {}".format(server.server_address))
     server.serve_forever()
