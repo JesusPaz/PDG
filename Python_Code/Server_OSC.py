@@ -207,8 +207,8 @@ def start_handler(unused_addr, args, msg):
 
     # Send song id to client (Pure Data)
 
-   # client = udp_client.SimpleUDPClient("127.0.0.1", 2002)
-   # client.send_message("/songid", song_id)
+    client = udp_client.SimpleUDPClient("127.0.0.1", 5006)
+    client.send_message("/songid", song_id)
 
     return
 
@@ -219,6 +219,6 @@ if __name__ == "__main__":
     dispatcher.map("/save", save_handler, "Save")
     dispatcher.map("/start", start_handler, "Ready")
 
-    server = osc_server.ThreadingOSCUDPServer(("192.168.100.130", 5005), dispatcher)
+    server = osc_server.ThreadingOSCUDPServer(("127.0.0.1", 5005), dispatcher)
     print("ServerOSC in Client Ready on {}".format(server.server_address))
     server.serve_forever()

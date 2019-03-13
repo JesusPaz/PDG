@@ -1,0 +1,50 @@
+#N canvas 676 0 681 716 10;
+#X declare -lib mrpeach;
+#X obj 200 299 cnv 15 300 300 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 110 51 import mrpeach;
+#X msg 184 140 disconnect;
+#X obj 234 236 packOSC;
+#X obj 150 278 udpsend;
+#X obj 372 358 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 279 356 1;
+#X msg 116 107 connect localhost 5005;
+#X msg 234 205 send /start \$1;
+#X msg 328 400;
+#X obj 92 400 unpackOSC;
+#X obj 92 472 print;
+#X obj 91 358 udpreceive 5006;
+#X obj 542 243 packOSC;
+#X msg 542 212 send /save \$1;
+#X msg 533 570;
+#X obj 287 450 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 402 356 Validar;
+#X text 276 340 Documento;
+#X text 296 381 Nombre Canción;
+#X obj 218 552 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 285 475 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 399 478 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 396 555 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 419 552 Enviar;
+#X text 248 549 Volver a Intentar;
+#X text 273 493 Reproducir;
+#X text 388 494 Pausar;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 5 0 6 0;
+#X connect 6 0 8 0;
+#X connect 7 0 4 0;
+#X connect 8 0 3 0;
+#X connect 10 0 11 0;
+#X connect 12 0 10 0;
+#X connect 13 0 4 0;
+#X connect 14 0 13 0;
+#X connect 15 0 14 0;
+#X connect 23 0 15 0;
+#X coords 0 -1 1 1 300 300 2 200 300;
