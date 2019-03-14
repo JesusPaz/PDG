@@ -42,11 +42,14 @@ def insert_beat(id_cancion, id_usuario, beats, delay):
         connection.close()
 
 
+
 def sum_beats(cad):
-    arr = cad.split(";")
+    arr = cad.split(",")
+    suma = 0.0
+    for x in arr:
+        suma += float(x)
 
-    return 0
-
+    return suma
 
 def update_usr_song(idSong, idUsr, repeticion, numUsr):
     connection = pymysql.connect("127.0.0.1",
@@ -208,7 +211,7 @@ def start_handler(unused_addr, args, msg):
     # Send song id to client (Pure Data)
 
     client = udp_client.SimpleUDPClient("127.0.0.1", 5006)
-    client.send_message("/songid", song_id)
+    client.send_message("/songid", song_id+".mp3")
 
     return
 

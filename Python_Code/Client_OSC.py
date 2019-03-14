@@ -9,6 +9,7 @@ import time
 
 from pythonosc import osc_message_builder
 from pythonosc import udp_client
+import numpy as np
 
 
 def create_rnd_beats(n):
@@ -17,15 +18,20 @@ def create_rnd_beats(n):
     for x in range(0, n-1):
         num = random.random()
         sum += num
-        cad += str(num)[:15]+","
-
+        if(x<n-2):
+            cad += str(num)[:5]+","
+        else:
+            cad += str(num)[:5]
     return cad, sum
 
 
 def sum_beats(cad):
-    arr = cad.split(";")
-   # aux = sum(arr)
-    return 0
+    arr = cad.split(",")
+    suma = 0.0
+    for x in arr:
+        suma += float(x)
+
+    return suma
 
 
 if __name__ == "__main__":
@@ -39,16 +45,17 @@ if __name__ == "__main__":
     client = udp_client.SimpleUDPClient(args.ip, args.port)
 
     x = random.randint(1, 10)
-    client.send_message("/start", str(x))
+   # client.send_message("/start", str(x))
 
     print("start {}".format(x))
 
     rnd_song = random.randint(1, 10)
     rnd_usr = random.randint(1, 10)
-    beats, sum = create_rnd_beats(500)
-    #aprint("Suma beats = {0}".format(sum))
-   # print("Beats : {0}".format(beats))
-   # example = "{0};{1};{2};0.5;{3}".format(rnd_song, rnd_usr, beats, sum_beats(beats))
-   # client.send_message("/save", example)
-
+    beats, sum = create_rnd_beats(5)
+    print("Suma beats = {0}".format(sum))
+    print("Beats : {0}".format(beats))
+    example = "{0};{1};{2};0.5;{3}".format(rnd_song, rnd_usr, beats, str(sum_beats(beats)))
+    client.send_message("/save", example)
+    print("Suma del metodo =",str(sum_beats(beats)))
+#1;1;0.374,0.497,0.950,0.074;1.895
     # time.sleep(1)
