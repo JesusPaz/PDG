@@ -176,43 +176,106 @@ def select_songs(idUser):
         connection.close()
 
 
+def get_idSong(songName):
+    connection = pymysql.connect("127.0.0.1",
+                                 "admin",
+                                 "1539321441",
+                                 "beatsalsa", )
+
+    try:
+        with connection.cursor() as cursor:
+
+            sql = "SELECT `ID_CANCION` FROM `despacho_cancion` WHERE `NOMBRE_CANCION`=%s"
+            cursor.execute(sql, songName)
+            query = cursor.fetchone()
+
+            print(query[0])
+            return query[0]
+    finally:
+        connection.close()
+
+
 # Al parametro save tiene que entrar el idCancion;idUsuario;Beats;Delay
 # Donde los beats deben ir separados por comas
 # Uun ejemplo 1;2;0.332,5.336,7.5552;0.5
 def save_handler(unused_addr, args, save):
     print("[{0}] ~ {1}".format(args[0], save))
 
-    data = save.split(";")
-
-    id_cancion = data[0]
+    data = save.split(" ")
+    aux = data[0].split(".")
+    id_cancion = get_idSong(aux[0])
     id_usuario = data[1]
-    beats = data[2]
-    delay = data[3]
-    sum_recv = data[4]
+    beats = "".join(data[4:])
+    delay = data[2]
+    sum_recv = data[3]
 
-    if str(sum_recv) == str(sum_beats(beats)):
-        insert_beat(id_cancion, id_usuario, beats, delay)
-        msg = "Beats from song {0}, usr {1} saved ".format(id_cancion, id_usuario)
-        print(msg)
-    else:
-        print("--------------------------ERROR: Check Sum Wrong -------------------------")
+   # if str(sum_recv) == str(sum_beats(beats)):
+    insert_beat(id_cancion, id_usuario, beats, delay)
+    msg = "Beats from song {0}, usr {1} saved ".format(id_cancion, id_usuario)
+    print(msg)
+    #else:
+    #    print("--------------------------ERROR: Check Sum Wrong -------------------------")
     return
+
+#Este metodo mira si el usuario existe en la base de datos
+def user_exists(idUser):
+    connection = pymysql.connect("127.0.0.1",
+                                 "admin",
+                                 "1539321441",
+                                 "beatsalsa", )
+
+    try:
+        with connection.cursor() as cursor:
+
+            sql = "SELECT `CEDULA_USUARIO` FROM `usuarios`"
+            cursor.execute(sql)
+            query = cursor.fetchall()
+
+            exists = False
+            for x in query:
+                if x[0] == idUser:
+                    exists = True
+            return exists
+    finally:
+        connection.close()
+
+
+def get_song_name(idSong):
+    connection = pymysql.connect("127.0.0.1",
+                                 "admin",
+                                 "1539321441",
+                                 "beatsalsa", )
+
+    try:
+        with connection.cursor() as cursor:
+
+            sql = "SELECT `NOMBRE_CANCION` FROM `despacho_cancion` WHERE `ID_CANCION`= %s"
+            cursor.execute(sql, idSong)
+            query = cursor.fetchone()
+
+            print(query[0])
+            return query[0]
+    finally:
+        connection.close()
 
 
 def start_handler(unused_addr, args, msg):
     print("[{0}] ~ {1}".format(args[0], msg))
 
-    idUser = int(msg)
-    validate_user(idUser)
-    song_id = select_songs(idUser)
-
-    # print(msg)
-
-    # Send song id to client (Pure Data)
-
+    #Falta metodo para ver si existe en la base de datos, depndiendo de eso puede seguir o no
     client = udp_client.SimpleUDPClient("127.0.0.1", 5006)
-    client.send_message("/songid", song_id+".mp3")
 
+    idUser = int(msg)
+    if user_exists(idUser):
+        validate_user(idUser)
+        song_id = select_songs(idUser)
+        print("Usuario Valido")
+        # Send song id to client (Pure Data)
+        client.send_message("/songid", get_song_name(song_id)+".wav")
+        client.send_message("/validation", 1)
+    else:
+        client.send_message("/validation", 0)
+        print("Usuario NO Valido")
     return
 
 

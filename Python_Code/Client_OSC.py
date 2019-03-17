@@ -54,7 +54,7 @@ if __name__ == "__main__":
     beats, sum = create_rnd_beats(5)
     print("Suma beats = {0}".format(sum))
     print("Beats : {0}".format(beats))
-    example = "{0};{1};{2};0.5;{3}".format(rnd_song, rnd_usr, beats, str(sum_beats(beats)))
+    example = "{0} {1} {2} 0.5 {3}".format("Marc_Anthony-Ahora_Quien.wav", "5", "0", "10 20 50 30 60 90 80 8 07 04 06 060 ")
     client.send_message("/save", example)
     print("Suma del metodo =",str(sum_beats(beats)))
 #1;1;0.374,0.497,0.950,0.074;1.895
