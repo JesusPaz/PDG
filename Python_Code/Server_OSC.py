@@ -271,7 +271,7 @@ def start_handler(unused_addr, args, msg):
         song_id = select_songs(idUser)
         print("Usuario Valido")
         # Send song id to client (Pure Data)
-        client.send_message("/songid", get_song_name(song_id)+".wav")
+        client.send_message("/songid", get_song_name(song_id)+".mp3")
         client.send_message("/validation", 1)
     else:
         client.send_message("/validation", 0)
@@ -286,5 +286,5 @@ if __name__ == "__main__":
     dispatcher.map("/start", start_handler, "Ready")
 
     server = osc_server.ThreadingOSCUDPServer(("127.0.0.1", 5005), dispatcher)
-    print("ServerOSC in Client Ready on {}".format(server.server_address))
+    print("ServerOSC-BACK Ready on {}".format(server.server_address))
     server.serve_forever()

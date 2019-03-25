@@ -25,7 +25,7 @@
 #X obj 1137 603 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 1173 467 open \$1;
-#X text 1051 490 play;
+#X text 1107 498 play;
 #X obj 1097 623 print;
 #X obj 1094 599 timer;
 #X obj 1094 652 list;
@@ -43,7 +43,7 @@
 #X obj 796 705 loadbang;
 #X msg 786 727 \; msg color 0;
 #X msg 933 739 \; msg vis_size 0 100;
-#X obj 226 390 cnv 15 100 20 empty song-name fabricando-fantasias-tito-nieves.wav
+#X obj 226 390 cnv 15 100 20 empty song-name grupo-niche-gotas-de-lluvia.wav
 15 15 0 14 -262144 -66577 0;
 #X obj 236 427 bng 95 250 50 0 empty empty Reproducir 20 50 0 10 -1
 -4160 -191407;
@@ -101,7 +101,7 @@
 #X obj 1418 641 delay 200;
 #X obj 536 634 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X msg 1082 486 1;
+#X msg 1096 519 1;
 #X msg 1080 430 0;
 #X obj 537 695 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -169,7 +169,7 @@
 #X obj -22 396 r sData;
 #X obj 949 655 t b b b;
 #X obj 1211 600 t b b b b;
-#X obj 1043 465 t b b b;
+#X obj 1057 498 t b b b;
 #X connect 1 0 3 0;
 #X connect 2 0 3 0;
 #X connect 4 0 3 0;
