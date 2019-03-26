@@ -60,16 +60,6 @@ def send_cedula(event):
                 print("cancion:"+aux[1])
 
 
-
-def space_feedback(event):
-    if event.char == ' ':
-        fm_feedback.create_oval(10, 10, 20, 20, width=2, fill='blue')
-
-        print("ONE", repr(event.char))
-        time.sleep(1)
-        fm_feedback.create_oval(10, 10, 40, 40, width=2, fill='blue')
-
-
 def load_song(song_name):
     pygame.mixer.init()
     pygame.mixer.music.load("Audio\\"+song_name)
@@ -99,6 +89,7 @@ def start_count(t):
     # Continue - Ignores all of the statements below it. We check if music is paused or not.
     global stop
     stop = FALSE
+    global current_time
     current_time = 0
 
     end = True
@@ -131,6 +122,15 @@ def play_again(event):
     global stop
     pygame.mixer.music.stop()
     stop = TRUE
+
+
+def space_feedback(event):
+    if event.char == ' ':
+        fm_feedback.create_oval(10, 10, 20, 20, width=2, fill='blue')
+
+        print("ONE", current_time)
+        time.sleep(1)
+        fm_feedback.create_oval(10, 10, 40, 40, width=2, fill='blue')
 
 
 btn_send.bind("<Button-1>", send_cedula)

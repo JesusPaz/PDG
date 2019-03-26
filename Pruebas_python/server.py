@@ -1,4 +1,6 @@
 # Basado en : https://github.com/realpython/materials/blob/master/python-sockets-tutorial/echo-server.py
+# UPDATE `despacho_cancion` SET `REPETICIONES`=0,`USUARIO_1`=0,`FECHA_1`="",`USUARIO_2`=0,`FECHA_2`="",`USUARIO_3`=0,`FECHA_3`=""
+
 import argparse
 import math
 import socket
@@ -32,7 +34,7 @@ def insert_beat(id_cancion, id_usuario, beats, delay):
 
 
 def sum_beats(cad):
-    arr = cad.split(",")
+    arr = cad.split(" ")
     suma = 0.0
     for x in arr:
         suma += float(x)
@@ -188,13 +190,15 @@ def get_idSong(songName):
 # Uun ejemplo 1;2;0.332,5.336,7.5552;0.5
 def save_handler(save):
     data = save.split(";")
-    #aux = data[0].split(".")
-    id_cancion = get_idSong(data[1])
+    #quita .mp3
+    aux = data[1].split(".")
+    id_cancion = get_idSong(aux[0])
     id_usuario = data[2]
-    beats = "".join(data[5:])
+    beats = data[5]
     delay = data[3]
     sum_recv = data[4]
-
+    print(sum_recv)
+    print(sum_beats(beats))
     if str(sum_recv) == str(sum_beats(beats)):
         insert_beat(id_cancion, id_usuario, beats, delay)
         msg = "Beats from song {0}, usr {1} saved ".format(id_cancion, id_usuario)
@@ -274,11 +278,12 @@ try:
             with conn:
                 print("Connected by", addr)
                 while True:
-                    data = conn.recv(1024)
+                    data = conn.recv(65507)
                     if not data:
                         break
                     else:
                         data = data.decode("utf-8")
+                        print(data)
                         aux = data.split(";")
                         if aux[0] == "start":
                             print("Rcv", aux[0])
