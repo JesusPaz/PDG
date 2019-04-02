@@ -292,5 +292,8 @@ try:
                             print("Rcv", aux[0])
                             save_handler(data)
 
+                        elif aux[0] == "delay":
+                            print("Rcv", aux[0])
+
 except KeyboardInterrupt:
     print("caught keyboard interrupt, exiting")

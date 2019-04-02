@@ -3,47 +3,60 @@
 from xxsubtype import spamdict
 
 import pygame
-from tkinter import *
+import tkinter as tk
 from mutagen.mp3 import MP3
 import threading
 import time
 import socket
 from tkinter import messagebox
 
-root = Tk()
+root = tk.Tk()
 root.title("Client")
 w, h = root.maxsize()
-root.geometry("%dx%d" % (w, h))
+#root.geometry("%dx%d" % (w, h))
 #root.geometry("300x300")
+root.attributes("-fullscreen", True)
 
-lbl_welcome = Label(root, text="Ingresa tu cédula")
+lbl_welcome = tk.Label(root, text="Ingresa tu cédula")
 
-btn_send = Button(root, text="Enviar")
+btn_send = tk.Button(root, text="Enviar")
 
-txt_cedula = Entry(root, width=20)
+txt_cedula = tk.Entry(root, width=20)
 
-lbl_welcome.pack()
-btn_send.place(x=180, y=25)
-txt_cedula.place(x=50, y=30)
+root.update_idletasks()
+width = root.winfo_width()
+height = root.winfo_height()
+x = (width // 2)
+y = (height // 2)
 
-btn_play = Button(root, text="Reproducir")
+lbl_welcome.place(x=x-60, y=y-100)
+btn_send.place(x=x+30, y=y-75)
+txt_cedula.place(x=x-100, y=y-70)
 
-btn_stop = Button(root, text="Volver a Intentar")
+btn_play = tk.Button(root, text="Reproducir")
 
-lbl_name = Label(root, text="Nombre de la cancion")
+btn_stop = tk.Button(root, text="Volver a Intentar")
 
-lbl_length = Label(root, text="Duración Total : --:--")
+lbl_name = tk.Label(root, text="Nombre de la cancion")
 
-lbl_current = Label(root, text="Tiempo Actual : --:--")
+lbl_length = tk.Label(root, text="Duración Total : --:--")
 
-fm_feedback = Canvas(root, width=200, height=20, bg="white")
+lbl_current = tk.Label(root, text="Tiempo Actual : --:--")
+
+
+lbl_length = tk.Label(root, text="Duración Total : --:--")
+
+lbl_current = tk.Label(root, text="Tiempo Actual : --:--")
+
+fm_feedback = tk.Canvas(root, width=200, height=20, bg="white")
 fm_feedback.create_rectangle(200, 5, 5, 20, width=2, fill='red')
-#fm_feedback.place(x=50, y=200)
 
 
 HOST = "127.0.0.1"  # The server's hostname or IP address
 PORT = 65432  # The port used by the server
 
+delay = True
+delay_num = 0
 
 # metodo para centrar ventana
 # tomado de https://stackoverrun.com/es/q/754917
@@ -56,7 +69,7 @@ def center(win):
     win.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
 
-#center(root)
+
 
 
 def sum_beats(cad):
@@ -91,9 +104,36 @@ def send_cedula(event):
             else:
                 nom_song = aux[1]
                 lbl_name["text"] = nom_song
-                load_song(aux[1])
-                print("cancion:" + aux[1])
-                draw_music_player()
+
+                if delay:
+                    delay_player()
+                    load_song("60-bpm-metronome.mp3")
+                    print("delay")
+                else:
+                    load_song(nom_song)
+                    print("cancion:" + nom_song)
+                    draw_music_player()
+
+
+#metodo para pintar el player del delay
+def delay_player():
+
+    # OCULTA ENTRADA DATOS
+    txt_cedula.config(state='disabled')
+    txt_cedula.place_forget()
+    btn_send.config(state='disabled')
+    btn_send.place_forget()
+    lbl_welcome.place_forget()
+
+    # HACE VISIBLE LA REPRODUCCION DE LA CANCION
+
+    lbl_name.place(x=x - 80, y=y - 40)
+    lbl_name["text"] = "DELAY"
+    lbl_length.place(x=x - 60, y=y)
+    lbl_current.place(x=x - 60, y=y + 20)
+    btn_play.place(x=x - 100, y=y + 60)
+    btn_stop.place(x=x, y=y + 60)
+    fm_feedback.place(x=x - 110, y=y + 110)
 
 
 def draw_music_player():
@@ -102,17 +142,16 @@ def draw_music_player():
     txt_cedula.place_forget()
     btn_send.config(state='disabled')
     btn_send.place_forget()
-    lbl_welcome.pack_forget()
+    lbl_welcome.place_forget()
 
     # HACE VISIBLE LA REPRODUCCION DE LA CANCION
 
-    btn_play.place(x=50, y=150)
-    btn_stop.place(x=150, y=150)
-    lbl_name.place(x=50, y=50)
-    lbl_length.place(x=90, y=80)
-    lbl_current.place(x=90, y=100)
-    fm_feedback.place(x=50, y=200)
-
+    lbl_name.place(x=x - 80, y=y - 40)
+    lbl_length.place(x=x - 60, y=y)
+    lbl_current.place(x=x - 60, y=y + 20)
+    btn_play.place(x=x - 100, y=y + 60)
+    btn_stop.place(x=x, y=y + 60)
+    fm_feedback.place(x=x - 110, y=y + 110)
 
 def draw_data_entry():
     # OCULTA EL REPRODUCTOR
@@ -126,9 +165,9 @@ def draw_data_entry():
     # HACE VISIBLE LA ENTRADA DE DATOS
     txt_cedula.config(state='normal')
     btn_send.config(state='normal')
-    lbl_welcome.pack()
-    btn_send.place(x=180, y=25)
-    txt_cedula.place(x=50, y=30)
+    lbl_welcome.place(x=x - 50, y=y - 100)
+    btn_send.place(x=x + 30, y=y - 75)
+    txt_cedula.place(x=x - 100, y=y - 70)
 
 
 def space_feedback(event):
@@ -142,9 +181,7 @@ def space_feedback(event):
             # Feedback visual
             space_boolean = True
             space_time = 0
-
-            fm_feedback.place(x=50, y=200)
-
+            fm_feedback.place(x=x - 110, y=y + 110)
 
 
 def load_song(song_name):
@@ -173,7 +210,8 @@ def start_count(t):
     # mixer.music.get_busy(): - Returns FALSE when we press the stop button (music stop playing)
     # Continue - Ignores all of the statements below it. We check if music is paused or not.
     global stop
-    stop = FALSE
+    global delay
+    stop = False
     global current_time
     current_time = 0
     global beats
@@ -210,32 +248,61 @@ def start_count(t):
                         cont += 1
                     else:
                         beats_msg += str(item)
-                delay = 0
-                sum = sum_beats(beats_msg)
-                pygame.mixer.music.stop()
-                msg_send = "save;" + nom_song + ";" + str(id_user) + ";" + str(delay) + ";" + str(sum) + ";" + beats_msg
-                print(msg_send)
-                with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                    s.connect((HOST, PORT))
-                    s.sendall(msg_send.encode("utf-8"))
 
-                if messagebox.askyesno(message="¿Desea escuchar otra canción?", title="Información"):
-                    send_cedula(event="")
+                if delay:
+                    pygame.mixer.music.stop()
+                    msg_send = "delay;" + str(id_user) + ";" + beats_msg + ";" + str(get_delay(beats_msg))
+                    print(msg_send)
+
+                    if messagebox.askyesno(message="El delay fue calculado, ¿Desea continuar?", title="Información"):
+
+                        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                            s.connect((HOST, PORT))
+                            s.sendall(msg_send.encode("utf-8"))
+                        delay = False
+
+                        lbl_name["text"] = nom_song
+                        load_song(nom_song)
+                        print("cancion:" + nom_song)
+                        draw_music_player()
+                    else:
+                        delay_player()
+                        load_song("60-bpm-metronome.mp3")
+                        print("delay")
+                        delay = True
+                    end = False
+
                 else:
-                    draw_data_entry()
-                end = False
 
+                    sum = sum_beats(beats_msg)
+                    pygame.mixer.music.stop()
+                    msg_send = "save;" + nom_song + ";" + str(id_user) + ";" + str(delay_num) + ";" + str(sum) + ";" + beats_msg
+                    print(msg_send)
+                    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                        s.connect((HOST, PORT))
+                        s.sendall(msg_send.encode("utf-8"))
+
+                    if messagebox.askyesno(message="¿Desea escuchar otra canción?", title="Información"):
+                        send_cedula(event="")
+                    else:
+                        draw_data_entry()
+                        delay = True
+                    end = False
+
+
+def get_delay(beats_delay):
+    return 0
 
 def play_song(event):
     global stop
     pygame.mixer.music.play()
-    stop = FALSE
+    stop = False
 
 
 def play_again(event):
     global stop
     pygame.mixer.music.stop()
-    stop = TRUE
+    stop = True
 
 
 btn_send.bind("<Button-1>", send_cedula)
