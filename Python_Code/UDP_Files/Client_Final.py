@@ -1,5 +1,7 @@
 # Basado en: https://github.com/attreyabhatt/Python-Music-Player/blob/master/main.py
 # Es necesario para que funciones importar librerias: pygame, mutagen
+from xxsubtype import spamdict
+
 import pygame
 from tkinter import *
 from mutagen.mp3 import MP3
@@ -10,7 +12,9 @@ from tkinter import messagebox
 
 root = Tk()
 root.title("Client")
-root.geometry("300x300")
+w, h = root.maxsize()
+root.geometry("%dx%d" % (w, h))
+#root.geometry("300x300")
 
 lbl_welcome = Label(root, text="Ingresa tu cédula")
 
@@ -28,23 +32,21 @@ btn_stop = Button(root, text="Volver a Intentar")
 
 lbl_name = Label(root, text="Nombre de la cancion")
 
-
 lbl_length = Label(root, text="Duración Total : --:--")
 
 lbl_current = Label(root, text="Tiempo Actual : --:--")
 
 fm_feedback = Canvas(root, width=200, height=20, bg="white")
 fm_feedback.create_rectangle(200, 5, 5, 20, width=2, fill='red')
-fm_feedback.place(x=50, y=200)
+#fm_feedback.place(x=50, y=200)
 
-lbl_aux = Label(root,text="HOLA")
-lbl_aux.place(x=20, y=250)
 
 HOST = "127.0.0.1"  # The server's hostname or IP address
 PORT = 65432  # The port used by the server
 
-#metodo para centrar ventana
-#tomado de https://stackoverrun.com/es/q/754917
+
+# metodo para centrar ventana
+# tomado de https://stackoverrun.com/es/q/754917
 def center(win):
     win.update_idletasks()
     width = win.winfo_width()
@@ -54,8 +56,7 @@ def center(win):
     win.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
 
-center(root)
-
+#center(root)
 
 
 def sum_beats(cad):
@@ -76,14 +77,14 @@ def send_cedula(event):
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
-        user_id_msg = "start;"+cedula
+        user_id_msg = "start;" + cedula
         s.sendall(user_id_msg.encode("utf-8"))
         data = s.recv(1024)
         data = data.decode("utf-8")
         aux = data.split(";")
         if aux[0] == "song_id":
             if aux[1] == "NO_VALIDO":
-                #mostrar mensage error
+                # mostrar mensage error
                 print("NO_VALIDO")
 
                 messagebox.showerror(message="Este documento no se encuentra registrado", title="ERROR")
@@ -91,7 +92,7 @@ def send_cedula(event):
                 nom_song = aux[1]
                 lbl_name["text"] = nom_song
                 load_song(aux[1])
-                print("cancion:"+aux[1])
+                print("cancion:" + aux[1])
                 draw_music_player()
 
 
@@ -114,8 +115,7 @@ def draw_music_player():
 
 
 def draw_data_entry():
-
-    #OCULTA EL REPRODUCTOR
+    # OCULTA EL REPRODUCTOR
     btn_play.place_forget()
     btn_stop.place_forget()
     lbl_name.place_forget()
@@ -123,7 +123,7 @@ def draw_data_entry():
     lbl_current.place_forget()
     fm_feedback.place_forget()
 
-    #HACE VISIBLE LA ENTRADA DE DATOS
+    # HACE VISIBLE LA ENTRADA DE DATOS
     txt_cedula.config(state='normal')
     btn_send.config(state='normal')
     lbl_welcome.pack()
@@ -132,27 +132,29 @@ def draw_data_entry():
 
 
 def space_feedback(event):
+    global space_boolean
+    space_boolean = False
     pygame.mixer.init()
     if pygame.mixer.music.get_busy():
         if event.char == ' ':
             print("ONE", current_time)
             beats.append(current_time)
-            #Feedback visual
-            #lbl_aux.place_forget()
-            #time.sleep(0.3)
+            # Feedback visual
+            space_boolean = True
+            space_time = 0
 
-            lbl_aux.place(x=20, y=250)
+            fm_feedback.place(x=50, y=200)
+
 
 
 def load_song(song_name):
-
-    pygame.mixer.music.load("Audio\\"+song_name)
+    pygame.mixer.music.load("Audio\\" + song_name)
     show_length_song(song_name)
     return
 
 
 def show_length_song(song_name):
-    audio = MP3("Audio\\"+song_name)
+    audio = MP3("Audio\\" + song_name)
     total_length = audio.info.length
 
     mins, secs = divmod(total_length, 60)
@@ -168,7 +170,6 @@ def show_length_song(song_name):
 
 
 def start_count(t):
-
     # mixer.music.get_busy(): - Returns FALSE when we press the stop button (music stop playing)
     # Continue - Ignores all of the statements below it. We check if music is paused or not.
     global stop
@@ -178,10 +179,13 @@ def start_count(t):
     global beats
     beats = []
     end = True
-    while(end):
+    global space_time
+    space_time = 0
+    while end:
         while current_time <= t and pygame.mixer.music.get_busy():
             if stop:
                 current_time = 0
+                space_time = 0
                 beats = []
             else:
                 mins, secs = divmod(current_time, 60)
@@ -191,14 +195,17 @@ def start_count(t):
                 lbl_current['text'] = "Tiempo Actual : " + timeformat
 
                 time.sleep(0.01)
-                lbl_aux.place_forget()
+                if space_time > 0.5 and space_boolean:
+                    fm_feedback.place_forget()
+                    space_time = 0
+                space_time += 0.01
                 current_time += 0.01
-            #>= t-260:
+            # >= t-260:
             if current_time >= 20:
                 beats_msg = ""
                 cont = 0
                 for item in beats:
-                    if cont < len(beats)-1:
+                    if cont < len(beats) - 1:
                         beats_msg += str(item) + " "
                         cont += 1
                     else:
@@ -206,7 +213,7 @@ def start_count(t):
                 delay = 0
                 sum = sum_beats(beats_msg)
                 pygame.mixer.music.stop()
-                msg_send = "save;"+nom_song+";"+str(id_user)+";"+str(delay)+";"+str(sum)+";"+beats_msg
+                msg_send = "save;" + nom_song + ";" + str(id_user) + ";" + str(delay) + ";" + str(sum) + ";" + beats_msg
                 print(msg_send)
                 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     s.connect((HOST, PORT))
@@ -236,7 +243,5 @@ btn_play.bind("<Button-1>", play_song)
 btn_stop.bind("<Button-1>", play_again)
 
 root.bind("<Key>", space_feedback)
-
-
 
 root.mainloop()

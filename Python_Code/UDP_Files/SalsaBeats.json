@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "salsabeats",
+  "private_key_id": "89e68b2e960a72d5d324f5efb6b81fff8cf1c437",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDELOWbg+HLMCVG\n4XV9EAzWcfHCQP/yr/ikTV+GAwPoa+1a2PGv/WrhKjgVDYuWEgTfQKCVq2uptfxc\nh529G7/h8rGKxyzqpvX82TajzOKFFcnLKJiET0JbYhsb+3YEZNN+vL0R/R9f3vWM\nY8KhhiiI+u+x+Sfc9XgqrXTOwkiq0FfEeKgjD76K6lYdT33qM1pdAuWNfDBGHBUi\nM6y0tY2+e8bNkFJLGcda0yT6ObVbn/wov79KqCKTY02Hu0Ya7A11TOf4NQtEymsb\nyKzQwIglwUvUAXQzCeVVXqIOUAg0/9t9GBhEHbvauXiKDcTcQ4nRnI6GRsJ32fyc\nCWa6iJ45AgMBAAECggEABUhTN3yV5i+J9W5pSECYI+cmFC3FZp7T8nKt7ZEjuAy9\n87oPSgaoK9+D6pc2iMg77toR6O3YhJWkscYqGndGk7pCCyNhY4Ey8wfTV5ZTDDPh\nvvF9J+Tte8H4ymhbTXN8mXdSHQuknmOF162xBkHzUfr13ORBbUsD3RxWHqIvLEBL\nV/xCMm+GoQ2Wr/wTOefZaejXiiUe7sF7HDbZK3cQHMZxCJdVpkYMjJlFj+TRFluh\nQcKyijWRUTp5IeBZ+uxjc7VYBSov2pc9LGQhz2iQbKq4fUV0z9BL9+HasetWwT2Z\ntE/dAsnzm7yT3e+I2Z6ZVESzJh1fRe+e9JWjRTkCoQKBgQD3V8d8bQolY8i3mMIj\n6wjWnSUbsN9+38hXne5XDarLHU5tUnOyowjLwLcgeYsjGatDj0FaePaDIxeh7heK\n5PCWxiuRmfDSpM5BYzcZ+X8maKqfhQuLE85ZWQIWc07NcyhhDW2sSCOUhmzvWecm\nNZlWes6vdAnt1p8gqVluNY2/yQKBgQDLCqagkUCX30HcYGS0DCNlgKeBjLtKPdSv\nPGXrBaAp+WdnCiB4HHNce5A53KIZP+4IEuHBM5iF5p/43jhxFH3ks0tMyvYQ1l7E\ne/8tAC5wZIr0Z+tYYejbM1RyZbm5dU5BsWfdEzqc4CYm1VsOCX8Whuy1kufNuxpO\n6rtOhpuC8QKBgGjJqnz/YR4IEUAfGpjG+V6bAt6hZ35D5oegJBqDcslMaC6OkO+s\nfIx939eFRrofJNyhc2mV97IFCv0SdqzkYz0tRcYQtuM26R7wnqaFeiXWj/q3DfXk\n9TYLLIRAY7FMyV2cp8smYNSKwtoAd5pLeOQXcTsJ6S73D0FyHa5ASAZpAoGAJVhC\nKYpNzSE9JeF85DjPUd4F8SgHUrJoqgp73GxedxnuUN9l9XGWLk5zypCwJ+DAUS/X\n4gcxaH9wsP9+dh4EwcnQccFq3NHxAEamOoqr//QeMrHicZEgmSCpyZi4Pko7KI4O\nwnTE9RGtMrtPUhehDm2moAbzJ73gKt+1r83GUKECgYAKEEIJIOQ8kD3apuFFxmpK\nTtzNAo1N6lRBd7SoJzyPsgiSalXNzNXjg149vvJxsfTndo2SmkSX0UqrvbSLj2EG\nPrqxBVmRn2at/VN3CqocoehVVgJQKc2z/vi9ITYE6OS8rxCSTOIp0xJifk4TaCa4\nlboUYMn9Pa0L4Mt47/94/A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "beatsalsa@salsabeats.iam.gserviceaccount.com",
+  "client_id": "116132340255254928222",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/beatsalsa%40salsabeats.iam.gserviceaccount.com"
+}
