@@ -233,7 +233,7 @@ def start_count(t):
                 lbl_current['text'] = "Tiempo Actual : " + timeformat
 
                 time.sleep(0.01)
-                if space_time > 0.5 and space_boolean:
+                if space_time > 0.1 and space_boolean:
                     fm_feedback.place_forget()
                     space_time = 0
                 space_time += 0.01
