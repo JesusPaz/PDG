@@ -9,6 +9,7 @@ import threading
 import time
 import socket
 from tkinter import messagebox
+from tkinter import font
 
 root = tk.Tk()
 root.title("Client")
@@ -17,7 +18,7 @@ w, h = root.maxsize()
 #root.geometry("300x300")
 root.attributes("-fullscreen", True)
 
-lbl_welcome = tk.Label(root, text="Ingresa tu cédula")
+lbl_welcome = tk.Label(root, text="Gracias por participar en el experimento de anotación \n de salsa. Por favor introduce tu cédula")
 
 btn_send = tk.Button(root, text="Enviar")
 
@@ -29,7 +30,7 @@ height = root.winfo_height()
 x = (width // 2)
 y = (height // 2)
 
-lbl_welcome.place(x=x-60, y=y-100)
+lbl_welcome.place(x=x-160, y=y-140)
 btn_send.place(x=x+30, y=y-75)
 txt_cedula.place(x=x-100, y=y-70)
 
@@ -37,8 +38,22 @@ btn_play = tk.Button(root, text="Reproducir")
 
 btn_stop = tk.Button(root, text="Volver a Intentar")
 
+btn_cont = tk.Button(root, text="Continuar")
+
+btn_reg = tk.Button(root, text="Regresar")
+
+btn_yes = tk.Button(root, text="Si")
+
+btn_hidden = tk.Button(root, text="")
+
+
 lbl_name = tk.Label(root, text="Nombre de la cancion")
 
+Helvfont = font.Font(size=15, weight="bold")
+
+
+lbl_prog = tk.Label(root, text="1 / 10", font=Helvfont)
+
 lbl_length = tk.Label(root, text="Duración Total : --:--")
 
 lbl_current = tk.Label(root, text="Tiempo Actual : --:--")
@@ -48,8 +63,9 @@ lbl_length = tk.Label(root, text="Duración Total : --:--")
 
 lbl_current = tk.Label(root, text="Tiempo Actual : --:--")
 
-fm_feedback = tk.Canvas(root, width=200, height=20, bg="white")
-fm_feedback.create_rectangle(200, 5, 5, 20, width=2, fill='red')
+
+#fm_feedback = tk.Canvas(root, width=200, height=20, bg="white")
+#fm_feedback.create_rectangle(200, 5, 5, 20, width=2, fill='red')
 
 
 HOST = "127.0.0.1"  # The server's hostname or IP address
@@ -57,6 +73,7 @@ PORT = 65432  # The port used by the server
 
 delay = True
 delay_num = 0
+cont_song = 1
 
 # metodo para centrar ventana
 # tomado de https://stackoverrun.com/es/q/754917
@@ -115,6 +132,21 @@ def send_cedula(event):
                     draw_music_player()
 
 
+def show_delay_msg():
+    btn_play.place_forget()
+    btn_stop.place_forget()
+    lbl_name.place_forget()
+    lbl_length.place_forget()
+    lbl_current.place_forget()
+    btn_yes.place_forget()
+
+
+    lbl_name.place(x=x - 140, y=y - 120)
+    lbl_name["text"] = "Gracias por practicar. Ahora da click en 'continuar' \n para escuchar la primera canción. Da click en \n 'regresar' si deseas practicar la tarea una vez más."
+    btn_cont.place(x=x - 100, y=y - 30)
+    btn_reg.place(x=x + 20, y=y - 30)
+
+
 #metodo para pintar el player del delay
 def delay_player():
 
@@ -124,16 +156,19 @@ def delay_player():
     btn_send.config(state='disabled')
     btn_send.place_forget()
     lbl_welcome.place_forget()
+    btn_cont.place_forget()
+    btn_reg.place_forget()
+    btn_yes.place_forget()
 
     # HACE VISIBLE LA REPRODUCCION DE LA CANCION
 
-    lbl_name.place(x=x - 80, y=y - 40)
-    lbl_name["text"] = "DELAY"
+    lbl_name.place(x=x - 140, y=y - 120)
+    lbl_name["text"] = "Durante el experimento te pediremos que escuches \n canciones de salsa y que marques el pulso de la \n canción (en negras) usando la barra espaciadora \n del teclado. Practica la tarea del experimento \n escuchando un fragmento de salsa:"
     lbl_length.place(x=x - 60, y=y)
     lbl_current.place(x=x - 60, y=y + 20)
     btn_play.place(x=x - 100, y=y + 60)
     btn_stop.place(x=x, y=y + 60)
-    fm_feedback.place(x=x - 110, y=y + 110)
+    #fm_feedback.place(x=x - 110, y=y + 110)
 
 
 def draw_music_player():
@@ -144,14 +179,20 @@ def draw_music_player():
     btn_send.place_forget()
     lbl_welcome.place_forget()
 
+    btn_cont.place_forget()
+    btn_reg.place_forget()
+    btn_yes.place_forget()
     # HACE VISIBLE LA REPRODUCCION DE LA CANCION
 
-    lbl_name.place(x=x - 80, y=y - 40)
+    lbl_name.place(x=x - 130, y=y - 110)
+    lbl_name["text"] = "Escucha con atención la canción y marca el \n puso (en negras) usando la barra espaciadora \n del teclado. Si por alguna razón, deseas repetir \n la canción haz click en 'volver a intentar'"
     lbl_length.place(x=x - 60, y=y)
     lbl_current.place(x=x - 60, y=y + 20)
     btn_play.place(x=x - 100, y=y + 60)
     btn_stop.place(x=x, y=y + 60)
-    fm_feedback.place(x=x - 110, y=y + 110)
+    lbl_prog.place(x=x + 450, y=y + 300)
+    lbl_prog["text"] = str(cont_song) + " / 10"
+    #fm_feedback.place(x=x - 110, y=y + 110)
 
 def draw_data_entry():
     # OCULTA EL REPRODUCTOR
@@ -160,15 +201,38 @@ def draw_data_entry():
     lbl_name.place_forget()
     lbl_length.place_forget()
     lbl_current.place_forget()
-    fm_feedback.place_forget()
+    btn_yes.place_forget()
+    lbl_prog.place_forget()
+
+    btn_cont.place_forget()
+    btn_reg.place_forget()
+   # fm_feedback.place_forget()
 
     # HACE VISIBLE LA ENTRADA DE DATOS
     txt_cedula.config(state='normal')
     btn_send.config(state='normal')
-    lbl_welcome.place(x=x - 50, y=y - 100)
+    lbl_welcome.place(x=x-160, y=y-140)
     btn_send.place(x=x + 30, y=y - 75)
     txt_cedula.place(x=x - 100, y=y - 70)
 
+def show_next_song():
+    # OCULTA EL REPRODUCTOR
+    btn_play.place_forget()
+    btn_stop.place_forget()
+    lbl_name.place_forget()
+    lbl_length.place_forget()
+    lbl_current.place_forget()
+
+    btn_cont.place_forget()
+    btn_reg.place_forget()
+    # fm_feedback.place_forget()
+
+    lbl_name.place(x=x - 140, y=y - 75)
+    lbl_name["text"] = "Gracias. ¿Estás listo para escuchar la siguiente canción?"
+    btn_yes.place(x=x , y=y - 40)
+    lbl_prog.place(x=x + 450, y=y + 300)
+    lbl_prog["text"] = str(cont_song) + " / 10"
+    return
 
 def space_feedback(event):
     global space_boolean
@@ -181,7 +245,7 @@ def space_feedback(event):
             # Feedback visual
             space_boolean = True
             space_time = 0
-            fm_feedback.place(x=x - 110, y=y + 110)
+           # fm_feedback.place(x=x - 110, y=y + 110)
 
 
 def load_song(song_name):
@@ -219,6 +283,8 @@ def start_count(t):
     end = True
     global space_time
     space_time = 0
+    global msg_send
+    global cont_song
     while end:
         while current_time <= t and pygame.mixer.music.get_busy():
             if stop:
@@ -234,12 +300,12 @@ def start_count(t):
 
                 time.sleep(0.01)
                 if space_time > 0.1 and space_boolean:
-                    fm_feedback.place_forget()
+                    #fm_feedback.place_forget()
                     space_time = 0
                 space_time += 0.01
                 current_time += 0.01
             # >= t-260:
-            if current_time >= 20:
+            if current_time >= 5:
                 beats_msg = ""
                 cont = 0
                 for item in beats:
@@ -254,22 +320,8 @@ def start_count(t):
                     msg_send = "delay;" + str(id_user) + ";" + beats_msg + ";" + str(get_delay(beats_msg))
                     print(msg_send)
 
-                    if messagebox.askyesno(message="El delay fue calculado, ¿Desea continuar?", title="Información"):
+                    show_delay_msg()
 
-                        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                            s.connect((HOST, PORT))
-                            s.sendall(msg_send.encode("utf-8"))
-                        delay = False
-
-                        lbl_name["text"] = nom_song
-                        load_song(nom_song)
-                        print("cancion:" + nom_song)
-                        draw_music_player()
-                    else:
-                        delay_player()
-                        load_song("60-bpm-metronome.mp3")
-                        print("delay")
-                        delay = True
                     end = False
 
                 else:
@@ -282,12 +334,37 @@ def start_count(t):
                         s.connect((HOST, PORT))
                         s.sendall(msg_send.encode("utf-8"))
 
-                    if messagebox.askyesno(message="¿Desea escuchar otra canción?", title="Información"):
-                        send_cedula(event="")
+                    if cont_song <2:
+                        show_next_song()
+                        cont_song+=1
                     else:
                         draw_data_entry()
+                        cont_song=1
                         delay = True
                     end = False
+
+
+def continue_delay(event):
+    global delay
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((HOST, PORT))
+        s.sendall(msg_send.encode("utf-8"))
+    delay = False
+
+    lbl_name["text"] = nom_song
+    load_song(nom_song)
+    print("cancion:" + nom_song)
+    draw_music_player()
+
+    return
+
+def repeat_delay(event):
+    global delay
+    delay_player()
+    load_song("60-bpm-metronome.mp3")
+    print("delay")
+    delay = True
+    return
 
 
 def get_delay(beats_delay):
@@ -308,6 +385,11 @@ def play_again(event):
 btn_send.bind("<Button-1>", send_cedula)
 btn_play.bind("<Button-1>", play_song)
 btn_stop.bind("<Button-1>", play_again)
+btn_cont.bind("<Button-1>", continue_delay)
+btn_reg.bind("<Button-1>", repeat_delay)
+btn_yes.bind("<Button-1>", send_cedula)
+
+
 
 root.bind("<Key>", space_feedback)
 
