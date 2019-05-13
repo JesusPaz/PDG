@@ -18,6 +18,9 @@ w, h = root.maxsize()
 # root.geometry("300x300")
 root.attributes("-fullscreen", True)
 
+number_songs = 2
+
+
 lbl_welcome = tk.Label(root,
                        text="Gracias por participar en el experimento de anotación \n de salsa. Por favor introduce tu cédula")
 
@@ -57,7 +60,7 @@ lbl_name = tk.Label(root, text="Nombre de la cancion")
 
 Helvfont = font.Font(size=15, weight="bold")
 
-lbl_prog = tk.Label(root, text="1 / 10", font=Helvfont)
+lbl_prog = tk.Label(root, text="1 / " + str(number_songs), font=Helvfont)
 
 lbl_length = tk.Label(root, text="Duración Total : --:--")
 
@@ -144,9 +147,9 @@ def song_end():
     #time.sleep(20)
 
     for evento in pygame.event.get():
-        print("ENTRa")
+
         if evento.type == pygame.constants.USEREVENT:
-            print("ACABA")
+
             end = False
 
 
@@ -191,6 +194,7 @@ def delay_player():
 
 
 def draw_music_player(event):
+    global number_songs
     # OCULTA ENTRADA DATOS
     txt_cedula.config(state='disabled')
     txt_cedula.place_forget()
@@ -212,7 +216,7 @@ def draw_music_player(event):
     btn_play.place(x=x - 100, y=y + 60)
     btn_stop.place(x=x, y=y + 60)
     lbl_prog.place(x=x + 450, y=y + 300)
-    lbl_prog["text"] = str(cont_song) + " / 10"
+    lbl_prog["text"] = str(cont_song) + " / " + str(number_songs)
     # fm_feedback.place(x=x - 110, y=y + 110)
 
 
@@ -240,6 +244,7 @@ def draw_data_entry():
 
 
 def show_next_song():
+    global number_songs
     # OCULTA EL REPRODUCTOR
     btn_play.place_forget()
     btn_stop.place_forget()
@@ -255,7 +260,7 @@ def show_next_song():
     lbl_name["text"] = "Gracias. ¿Estás listo para escuchar la siguiente canción?"
     btn_yes.place(x=x, y=y - 40)
     lbl_prog.place(x=x + 450, y=y + 300)
-    lbl_prog["text"] = str(cont_song) + " / 10"
+    lbl_prog["text"] = str(cont_song) + " / " + str(number_songs)
 
 
 def space_feedback(event):
@@ -373,7 +378,7 @@ def start_count(t):
                             s.connect((HOST, PORT))
                             s.sendall(msg_send.encode("utf-8"))
 
-                        if cont_song < 2:
+                        if cont_song < number_songs:
                             show_next_song()
                             cont_song += 1
                         else:
