@@ -21,6 +21,7 @@ parts/
 sdist/
 var/
 wheels/
+Python_Code/UDP_Files/Audio/
 *.egg-info/
 .installed.cfg
 *.egg
