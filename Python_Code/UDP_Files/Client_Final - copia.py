@@ -92,13 +92,15 @@ def center(win):
 
 
 def sum_beats(cad):
-    arr = cad.split(" ")
-    suma = 0.0
-    for x in arr:
-        suma += float(x)
+    if((cad is not None) and (len(cad) is not 0) ):
+        arr = cad.split(" ")
+        suma = 0.0
+        for x in arr:
+            suma += float(x)
 
-    return suma
-
+        return suma
+    else:
+        return 0
 
 def send_cedula(event):
     global id_user
@@ -127,7 +129,7 @@ def send_cedula(event):
                 if delay:
                     delay_player()
                     load_song("60-bpm-metronome.mp3")
-                    print("delay")
+
                     song_end()
                 else:
                     load_song(nom_song)
@@ -138,9 +140,9 @@ def send_cedula(event):
 def song_end():
     pygame.init()
     end = True
-    print("ANTESS")
+
     #time.sleep(20)
-    print("DESPUES")
+
     for evento in pygame.event.get():
         print("ENTRa")
         if evento.type == pygame.constants.USEREVENT:
@@ -165,7 +167,7 @@ def show_delay_msg():
 
 # metodo para pintar el player del delay
 def delay_player():
-    print("PINTA")
+
     # OCULTA ENTRADA DATOS
     txt_cedula.config(state='disabled')
     txt_cedula.place_forget()
@@ -267,7 +269,7 @@ def space_feedback(event):
             act = time.time()
             aux = act - inicio_de_tiempo
             print("TWO", aux)
-            beats.append(current_time)
+            beats.append(aux)
             # Feedback visual
             space_boolean = True
             space_time = 0
@@ -342,7 +344,7 @@ def start_count(t):
             # >= t-260:
         for evento in pygame.event.get():
 
-            if evento.type == pygame.constants.USEREVENT:
+            if evento.type == pygame.constants.USEREVENT and current_time >= t-5:
 
                 beats_msg = ""
                 cont = 0
@@ -379,6 +381,9 @@ def start_count(t):
                         end = False
                     else:
                         show_msg_bad_bpm()
+                        end = False
+
+
 
 
 def show_end_message():
@@ -426,6 +431,7 @@ def show_msg_bad_bpm():
     load_song(nom_song)
 
 
+
 def beats_validation(beats):
     cont_minute_1 = 0
     cont_minute_2 = 0
@@ -471,7 +477,7 @@ def repeat_delay(event):
     global delay
     delay_player()
     load_song("60-bpm-metronome.mp3")
-    print("delay")
+
     delay = True
 
 
