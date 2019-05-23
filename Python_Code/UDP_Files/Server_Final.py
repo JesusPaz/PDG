@@ -9,8 +9,8 @@ from datetime import datetime, date, time, timedelta
 import pymysql
 
 
-#HOST = "192.168.114.38"  # Standard loopback interface address (localhost)
-HOST = "127.0.0.1"
+HOST = "192.168.114.38"  # Standard loopback interface address (localhost)
+#HOST = "127.0.0.1"
 PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
 
 
@@ -37,12 +37,16 @@ def insert_beat(id_cancion, id_usuario, beats, delay):
 
 
 def sum_beats(cad):
-    arr = cad.split(" ")
-    suma = 0.0
-    for x in arr:
-        suma += float(x)
+    if ((cad is not None) and (len(cad) is not 0)):
+        arr = cad.split(" ")
+        suma = 0.0
+        for x in arr:
+            suma += float(x)
 
-    return suma
+        return suma
+    else:
+        return 0
+
 
 def update_usr_song(idSong, idUsr, repeticion, numUsr):
     connection = pymysql.connect("127.0.0.1",
@@ -208,6 +212,9 @@ def save_handler(save):
         print(msg)
     else:
         print("--------------------------ERROR: Check Sum Wrong -------------------------")
+        insert_beat(id_cancion, id_usuario, beats, delay)
+        msg = "Beats from song {0}, usr {1} saved ".format(id_cancion, id_usuario)
+        print(msg)
     return
 
 #Este metodo mira si el usuario existe en la base de datos
@@ -251,6 +258,35 @@ def get_song_name(idSong):
     finally:
         connection.close()
 
+def insert_delay(id_usuario, beats, delay):
+    connection = pymysql.connect("127.0.0.1",
+                                 "admin",
+                                 "1539321441",
+                                 "beatsalsa", )
+
+
+    try:
+        with connection.cursor() as cursor:
+            # Create a new record
+            sql = "INSERT INTO `delay`(`CEDULA_USUARIO`, `BEATS_MSG`, `DELAY_VALUE`, `FECHA`) VALUES (%s, %s, %s, CURRENT_TIMESTAMP)"
+            cursor.execute(sql, (id_usuario, beats, delay))
+
+        # connection is not autocommit by default. So you must commit to save
+        # your changes.
+        # your changes.
+        connection.commit()
+
+    finally:
+        connection.close()
+
+def delay_handler(msg):
+    data = msg.split(";")
+    idUser= data[1]
+    beats = data[2]
+    delay = data[3]
+
+    insert_delay(idUser, beats, delay)
+
 
 def start_handler(msg):
 #    print("[{0}] ~ {1}".format(args[0], msg))
@@ -289,14 +325,14 @@ try:
                         print(data)
                         aux = data.split(";")
                         if aux[0] == "start":
-                            print("Rcv", aux[0])
+                            print("Rcv start", aux[0])
                             conn.sendall(start_handler(aux[1]).encode("utf-8"))
                         elif aux[0] == "save":
-                            print("Rcv", aux[0])
+                            print("Rcv save", aux[0])
                             save_handler(data)
 
                         elif aux[0] == "delay":
-                            print("Rcv", aux[0])
-
+                            print("Rcv delay", aux[0])
+                            delay_handler(data)
 except KeyboardInterrupt:
     print("caught keyboard interrupt, exiting")

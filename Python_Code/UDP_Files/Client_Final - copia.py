@@ -18,7 +18,7 @@ w, h = root.maxsize()
 # root.geometry("300x300")
 root.attributes("-fullscreen", True)
 
-number_songs = 2
+number_songs = 10
 
 
 lbl_welcome = tk.Label(root,
@@ -74,7 +74,7 @@ lbl_current = tk.Label(root, text="Tiempo Actual : --:--")
 # fm_feedback.create_rectangle(200, 5, 5, 20, width=2, fill='red')
 
 
-#HOST = "172.30.162.112"  # The server's hostname or IP address
+#HOST = "192.168.114.38"  # The server's hostname or IP address
 HOST = "127.0.0.1"
 PORT = 65432  # The port used by the server
 
@@ -105,6 +105,13 @@ def sum_beats(cad):
     else:
         return 0
 
+def write_log(text):
+    log = open("log.txt","a")
+    date = time.strftime("%c")
+    msg = "[ "+date+" ] - "+text+"\n"
+    log.write(msg)
+    log.close()
+
 def send_cedula(event):
     global id_user
     cedula = txt_cedula.get()
@@ -131,12 +138,13 @@ def send_cedula(event):
 
                 if delay:
                     delay_player()
-                    load_song("60-bpm-metronome.mp3")
+                    load_song("salsa_loop_82bpm.mp3")
 
                     song_end()
                 else:
                     load_song(nom_song)
                     print("cancion:" + nom_song)
+                    write_log("cancion:" + nom_song+" idUser:"+id_user)
                     draw_music_player(event)
 
 
@@ -270,10 +278,9 @@ def space_feedback(event):
     pygame.mixer.init()
     if pygame.mixer.music.get_busy():
         if event.char == ' ':
-            print("ONE", current_time)
             act = time.time()
             aux = act - inicio_de_tiempo
-            print("TWO", aux)
+           # print("BEAT", aux)
             beats.append(aux)
             # Feedback visual
             space_boolean = True
@@ -363,6 +370,7 @@ def start_count(t):
                     pygame.mixer.music.stop()
                     msg_send = "delay;" + str(id_user) + ";" + beats_msg + ";" + str(get_delay(beats_msg))
                     print(msg_send)
+                    write_log(msg_send)
                     show_delay_msg()
                     end = False
 
@@ -373,10 +381,13 @@ def start_count(t):
                     msg_send = "save;" + nom_song + ";" + str(id_user) + ";" + str(delay_num) + ";" + str(
                         sum) + ";" + beats_msg
                     print(msg_send)
+                    write_log(msg_send)
                     if beats_ok:
+                        #linea 378 da error
                         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                             s.connect((HOST, PORT))
                             s.sendall(msg_send.encode("utf-8"))
+
 
                         if cont_song < number_songs:
                             show_next_song()
@@ -452,16 +463,20 @@ def beats_validation(beats):
             cont_minute_3 += 1
 
     print("Minuto 1 : " + str(cont_minute_1))
+    write_log("Minuto 1 : " + str(cont_minute_1))
     print("Minuto 2 : " + str(cont_minute_2))
+    write_log("Minuto 2 : " + str(cont_minute_2))
     print("Minuto 3 : " + str(cont_minute_3))
+    write_log("Minuto 3 : " + str(cont_minute_3))
 
-    if (cont_minute_1 >= 60) and (cont_minute_1 <= 140):
-        if (cont_minute_2 >= 60) and (cont_minute_2 <= 140):
+    if (cont_minute_1 >= 50) and (cont_minute_1 <= 150):
+        if (cont_minute_2 >= 50) and (cont_minute_2 <= 150):
             is_ok = True
             if (cont_minute_3 >= 60) and (cont_minute_3 <= 140):
                 print("ook 3 minutos")
 
     print(is_ok)
+
     return is_ok
 
 
@@ -470,18 +485,20 @@ def continue_delay(event):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
         s.sendall(msg_send.encode("utf-8"))
+        write_log(msg_send)
     delay = False
 
     lbl_name["text"] = nom_song
     load_song(nom_song)
     print("cancion:" + nom_song)
+    write_log("cancion:" + nom_song)
     draw_music_player(event)
 
 
 def repeat_delay(event):
     global delay
     delay_player()
-    load_song("60-bpm-metronome.mp3")
+    load_song("salsa_loop_82bpm.mp3")
 
     delay = True
 
