@@ -9,8 +9,8 @@ from datetime import datetime, date, time, timedelta
 import pymysql
 
 
-HOST = "192.168.114.38"  # Standard loopback interface address (localhost)
-#HOST = "127.0.0.1"
+#HOST = "192.168.114.38"  # Standard loopback interface address (localhost)
+HOST = "127.0.0.1"
 PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
 
 
@@ -185,11 +185,18 @@ def get_idSong(songName):
             sql = "SELECT `ID_CANCION` FROM `despacho_cancion` WHERE `NOMBRE_CANCION`=%s"
             cursor.execute(sql, songName)
             query = cursor.fetchone()
-
             print(query[0])
             return query[0]
     finally:
         connection.close()
+
+
+def write_log(text):
+    log = open("log_bad_beat.txt","a")
+    date = time.strftime("%c")
+    msg = "[ "+date+" ] - "+text+"\n"
+    log.write(msg)
+    log.close()
 
 
 # Al parametro save tiene que entrar el idCancion;idUsuario;Beats;Delay
@@ -215,6 +222,7 @@ def save_handler(save):
         insert_beat(id_cancion, id_usuario, beats, delay)
         msg = "Beats from song {0}, usr {1} saved ".format(id_cancion, id_usuario)
         print(msg)
+        write_log("ID_SONG: "+ str(id_cancion)+" ID_USER: "+str(id_usuario)+" BEATS: "+ str(beats))
     return
 
 #Este metodo mira si el usuario existe en la base de datos

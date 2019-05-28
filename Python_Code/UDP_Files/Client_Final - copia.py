@@ -123,7 +123,7 @@ def send_cedula(event):
         s.connect((HOST, PORT))
         user_id_msg = "start;" + cedula
         s.sendall(user_id_msg.encode("utf-8"))
-        data = s.recv(1024)
+        data = s.recv(65507)
         data = data.decode("utf-8")
         aux = data.split(";")
         if aux[0] == "song_id":
