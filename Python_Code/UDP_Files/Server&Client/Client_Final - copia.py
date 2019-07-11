@@ -74,8 +74,8 @@ lbl_current = tk.Label(root, text="Tiempo Actual : --:--")
 # fm_feedback.create_rectangle(200, 5, 5, 20, width=2, fill='red')
 
 
-#HOST = "192.168.114.38"  # The server's hostname or IP address
-HOST = "127.0.0.1"
+HOST = "192.168.114.38"  # The server's hostname or IP address
+#HOST = "127.0.0.1"
 PORT = 65432  # The port used by the server
 
 delay = True

@@ -9,8 +9,8 @@ from datetime import datetime, date, time, timedelta
 import pymysql
 
 
-#HOST = "192.168.114.38"  # Standard loopback interface address (localhost)
-HOST = "127.0.0.1"
+HOST = "192.168.114.38"  # Standard loopback interface address (localhost)
+#HOST = "127.0.0.1"
 PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
 
 
@@ -18,7 +18,7 @@ def insert_beat(id_cancion, id_usuario, beats, delay):
     connection = pymysql.connect("127.0.0.1",
                                  "admin",
                                  "1539321441",
-                                 "beatsalsa", )
+                                 "beatsalsa")
 
 
     try:
@@ -41,8 +41,12 @@ def sum_beats(cad):
         arr = cad.split(" ")
         suma = 0.0
         for x in arr:
-            suma += float(x)
-
+            try:
+                suma += float(x)
+            except ValueError:
+                print("error")
+                #write_total_log("error")
+                return suma
         return suma
     else:
         return 0
@@ -131,6 +135,7 @@ def select_songs(idUser):
             cursor.execute(sql)
             query = cursor.fetchall()
             print(str(len(query)) + " tamaño Query <3")
+            #write_total_log(str(len(query)) + " tamaño Query <3")
             while end:
 
                 x = randint(0, len(query) - 1)
@@ -149,6 +154,7 @@ def select_songs(idUser):
                     update_usr_song(id, idUser, repetition, 1)
 
                     print("La canción se encontró con id {0} queda asignada para {1}".format(id, idUser))
+                   # write_total_log("La canción se encontró con id {0} queda asignada para {1}".format(id, idUser))
                     end = False
                     return str(id)
 
@@ -158,16 +164,19 @@ def select_songs(idUser):
                         repetition += 1
                         update_usr_song(id, idUser, repetition, 2)
                         print ("La canción se encontró con id {0} queda asignada para {1}".format(id, idUser))
+                       # write_total_log("La canción se encontró con id {0} queda asignada para {1}".format(id, idUser))
                         end = False
                         return str(id)
                     elif user_1 != idUser and user_2 != idUser and user_2 != 0 and user_3 == 0:
                         repetition += 1
                         update_usr_song(id, idUser, repetition, 3)
                         print ("La canción se encontró con id {0} queda asignada para {1}".format(id, idUser))
+                       # write_total_log("La canción se encontró con id {0} queda asignada para {1}".format(id, idUser))
                         end = False
                         return str(id)
                     else:
                         print("Descartada cancion id {0}".format(id))
+                       # write_total_log("Descartada cancion id {0}".format(id))
 
     finally:
         connection.close()
@@ -186,6 +195,7 @@ def get_idSong(songName):
             cursor.execute(sql, songName)
             query = cursor.fetchone()
             print(query[0])
+            #write_total_log(str(query[0]))
             return query[0]
     finally:
         connection.close()
@@ -193,10 +203,19 @@ def get_idSong(songName):
 
 def write_log(text):
     log = open("log_bad_beat.txt","a")
-    date = time.strftime("%c")
-    msg = "[ "+date+" ] - "+text+"\n"
+    #date = time.strftime("%c")
+    msg = "[ "+"30/05/2019"+" ] - "+text+"\n"
     log.write(msg)
     log.close()
+
+
+def write_total_log(text):
+    log = open("log_total.txt","a")
+    #date = time.strftime("%c")
+    msg = "[ "+"30/05/2019"+" ] - "+text+"\n"
+    log.write(msg)
+    log.close()
+
 
 
 # Al parametro save tiene que entrar el idCancion;idUsuario;Beats;Delay
@@ -211,17 +230,22 @@ def save_handler(save):
     beats = data[5]
     delay = data[3]
     sum_recv = data[4]
-    print(sum_recv)
+    print("Recv:"+sum_recv)
+    #write_total_log("Recv: "+ str(sum_recv))
     print(sum_beats(beats))
+    #write_total_log("Sum: "+ str(sum_beats(beats)))
     if str(sum_recv) == str(sum_beats(beats)):
         insert_beat(id_cancion, id_usuario, beats, delay)
         msg = "Beats from song {0}, usr {1} saved ".format(id_cancion, id_usuario)
         print(msg)
+       # write_total_log(msg)
     else:
         print("--------------------------ERROR: Check Sum Wrong -------------------------")
         insert_beat(id_cancion, id_usuario, beats, delay)
         msg = "Beats from song {0}, usr {1} saved ".format(id_cancion, id_usuario)
         print(msg)
+        #write_total_log("--------------------------ERROR: Check Sum Wrong -------------------------")
+        #write_total_log(msg)
         write_log("ID_SONG: "+ str(id_cancion)+" ID_USER: "+str(id_usuario)+" BEATS: "+ str(beats))
     return
 
@@ -262,6 +286,7 @@ def get_song_name(idSong):
             query = cursor.fetchone()
 
             print(query[0])
+            #write_total_log(str(query[0]))
             return query[0]
     finally:
         connection.close()
@@ -306,7 +331,7 @@ def start_handler(msg):
     if user_exists(idUser):
         validate_user(idUser)
         song_id = select_songs(idUser)
-        print("Usuario Valido")
+
         # Send song id to client (Pure Data)
        # client.send_message("/songid", get_song_name(song_id)+".mp3")
         #client.send_message("/validation", 1)
@@ -324,6 +349,7 @@ try:
             conn, addr = s.accept()
             with conn:
                 print("Connected by", addr)
+               # write_total_log("Connected by"+ str(addr))
                 while True:
                     data = conn.recv(65507)
                     if not data:
@@ -331,16 +357,20 @@ try:
                     else:
                         data = data.decode("utf-8")
                         print(data)
+                       # write_total_log(data)
                         aux = data.split(";")
                         if aux[0] == "start":
-                            print("Rcv start", aux[0])
+                            print("Rcv ", aux[0])
+                           # write_total_log("Rcv "+ str(aux[0]))
                             conn.sendall(start_handler(aux[1]).encode("utf-8"))
                         elif aux[0] == "save":
-                            print("Rcv save", aux[0])
+                            print("Rcv ", aux[0])
+                           # write_total_log("Rcv "+str (aux[0]))
                             save_handler(data)
 
                         elif aux[0] == "delay":
-                            print("Rcv delay", aux[0])
+                            print("Rcv ", aux[0])
+                           # write_total_log("Rcv "+str( aux[0]))
                             delay_handler(data)
 except KeyboardInterrupt:
     print("caught keyboard interrupt, exiting")
