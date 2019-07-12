@@ -26,7 +26,7 @@ def verification_real_repetitions():
                 cursor.execute(sql, x)
                 query = cursor.fetchall()
                 for y in range(3):
-                    ids_databeats[str(x) + "_" + str(y)] = query[y]
+                    ids_databeats[str(x[0]) + "_" + str(y)] = query[y]
 
             print(len(ids_databeats))
             return ids_databeats
@@ -53,32 +53,123 @@ def sum_beats(cad):
         return 0
 
 
-def check_if_checksum_error():
-    data = verification_real_repetitions()
+def find_id_to_name(id):
+    connection = pymysql.connect("127.0.0.1",
+                                 "admin",
+                                 "1539321441",
+                                 "beatsalsa")
 
-    for x in all_id:
-        sum0 = sum_beats(data[str(x) + "_0"][2])
-        sum1 = sum_beats(data[str(x) + "_1"][2])
-        sum2 = sum_beats(data[str(x) + "_2"][2])
+    try:
 
-        print("Para el ID: " + str(x))
-        print(sum0)
-        print(sum1)
-        print(sum2)
+        with connection.cursor() as cursor:
+
+            sql = "SELECT `ID_CANCION` FROM `despacho_cancion` WHERE `NOMBRE_CANCION`=%s"
+            cursor.execute(sql, id)
+            return cursor.fetchone()[0]
+
+    finally:
+        connection.close()
 
 
 def read_txt():
-    archivo = open("Ses1.txt", "r")
+    beats = {}
+    archivo = open("SesTotal.txt", "r")
     for linea in archivo.readlines():
-        print("----------------LINEA-----------------------")
+
         msg = linea
         cont = linea.find("save")
 
         if cont is not -1:
-            print(msg[cont:])
-        
+            aux = msg[cont:].split(";")
+
+            new_id = find_id_to_name(aux[1].split(".")[0])
+            aux[1] = new_id
+            beats[str(new_id) + "_" + aux[2]] = aux[1:]
 
     archivo.close()
 
+    return beats
 
-read_txt()
+
+def update_beats(id_song, id_user, beats):
+    connection = pymysql.connect("127.0.0.1",
+                                 "admin",
+                                 "1539321441",
+                                 "beatsalsa")
+
+    try:
+
+        with connection.cursor() as cursor:
+
+            sql = "UPDATE `databeats` SET `BEATS`= %s WHERE `FK_ID_CANCION` = %s AND `FK_CEDULA_USUARIO` = %s"
+            cursor.execute(sql, (beats, id_song, id_user))
+
+            # connection is not autocommit by default. So you must commit to save
+            # your changes.
+            connection.commit()
+
+    finally:
+        connection.close()
+
+
+def check_if_checksum_error():
+    real_data = read_txt()
+
+    data = verification_real_repetitions()
+
+    bad_beat = {}
+    not_found = {}
+
+    for x in all_id:
+
+        if str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1]) in real_data:
+
+            sum0 = sum_beats(data[str(x[0]) + "_0"][2])
+
+            if real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][3] != str(sum0):
+                bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])] = \
+                    real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4]
+
+                update_beats(str(x[0]), str(data[str(x[0]) + "_0"][1]),
+                             real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4])
+
+        else:
+            not_found[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])] = 0
+
+        if str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1]) in real_data:
+            sum1 = sum_beats(data[str(x[0]) + "_1"][2])
+
+            if real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1])][3] != str(sum1):
+                bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1])] = \
+                    real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4]
+
+                update_beats(str(x[0]), str(data[str(x[0]) + "_1"][1]),
+                             real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1])][4])
+
+
+        else:
+            not_found[str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1])] = 0
+
+        if str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1]) in real_data:
+            sum2 = sum_beats(data[str(x[0]) + "_2"][2])
+
+            if real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1])][3] != str(sum2):
+                bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1])] = \
+                    real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4]
+
+                update_beats(str(x[0]), str(data[str(x[0]) + "_2"][1]),
+                             real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1])][4])
+
+        else:
+            not_found[str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1])] = 0
+
+    print("TAMAÑO TOTAL")
+    print(len(bad_beat))
+
+    print("TAMAÑO FALTANTES")
+    print(len(not_found))
+    
+    for x in not_found:
+        print(x)
+
+check_if_checksum_error()
