@@ -168,7 +168,7 @@ def check_if_checksum_error():
 
     print("TAMAÑO FALTANTES")
     print(len(not_found))
-    
+
     for x in not_found:
         print(x)
 
