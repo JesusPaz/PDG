@@ -1,10 +1,7 @@
 import pymysql
 import librosa
-import datetime
 
 # The method is used to get the delay array whith the parameters called id song and id user.
-
-
 def get_delay_from_song(id_song, id_user):
     connection = pymysql.connect("127.0.0.1",
                                  "admin",
@@ -100,10 +97,10 @@ def find_value_total_delay():
     # Delay using librosa library
     x, sr = librosa.load('audio/salsa_loop_82bpm.mp3')
     tempo, beat_times = librosa.beat.beat_track(x, sr=sr, start_bpm=82, units='time')
-    # beat_real_times = find_beat_time_from_bpm(82, 30)
-    #print(beat_times)
-    #print("----------------------------")
-    #print(len(beat_times), "bpm length")
+    print(beat_times)
+    beat_real_times = find_beat_time_from_bpm(82, 30)
+    print("----------------------------")
+    print(beat_real_times)
     for item in delay_list:
         print(item)
         delta_list = []
