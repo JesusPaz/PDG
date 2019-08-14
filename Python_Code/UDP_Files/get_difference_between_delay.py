@@ -13,7 +13,7 @@ def get_all_delays():
 
     try:
         with connection.cursor() as cursor:
-            sql = "SELECT `CEDULA_USUARIO`, `BEATS_MSG` FROM `delay`"
+            sql = "SELECT `CEDULA_USUARIO`, `BEATS_MSG`, `FECHA` FROM `delay`"
             cursor.execute(sql)
             query = cursor.fetchall()
             # print(query)
@@ -40,12 +40,22 @@ def create_dict_list():
     return dict_beats
 
 
+def aux_create_dict_list():
+    query = get_all_delays()
+    dict_beats = {}
+    for item in query:
+        date = "{0}-{1}-H{2}-{3}".format(str(getattr(item[2], 'day')), str(getattr(item[2], 'month')),
+                                        str(getattr(item[2], 'hour')), str(getattr(item[2], 'minute')))
+        dict_beats[str(item[0])+"_"+date] = item[1]
+
+    return dict_beats
+
+
 def calculate_repetitions_delay_user(new_deltas, actual_deltas):
     if actual_deltas == None:
         repetitions = {}
     else:
         repetitions = actual_deltas
-
 
     for item in new_deltas:
         list_aux = []
@@ -57,8 +67,7 @@ def calculate_repetitions_delay_user(new_deltas, actual_deltas):
             else:
                 list_aux.append(item[1])
                 repetitions[float(item[0])] = list_aux
-                #print(repetitions[float(item[0])])
-    #print(repetitions)
+
     return repetitions
 
 
@@ -70,7 +79,7 @@ def find_space_between_data(list_string):
         if (x + 1) < len(array_data):
             delta = float(array_data[x + 1]) - float(array_data[x])
             list_aux = []
-            list_aux.append(round(delta, 2))
+            list_aux.append(round(delta, 3))
             list_aux.append(float(array_data[x]))
             list_return.append(list_aux)
 
@@ -88,24 +97,25 @@ def process_delay_dict():
 
             deltas = find_space_between_data(item)
             dict_deltas[user] = calculate_repetitions_delay_user(deltas, dict_deltas[user])
-            break
 
     return dict_deltas
 
-def aux_process_dict():
-    dict_list = create_dict_list()
+
+def aux_process_delay_dict():
+    dict_list = aux_create_dict_list()
     dict_deltas = {}
-    user = 1233194515
-    dict_deltas[user] = None
-    deltas = find_space_between_data(dict_list[user][0])
-    dict_deltas[user] = calculate_repetitions_delay_user(deltas, dict_deltas[user])
+
+    for user in dict_list:
+        deltas = find_space_between_data(dict_list[user])
+        dict_deltas[user] = calculate_repetitions_delay_user(deltas, None)
 
     return dict_deltas
+
 
 def print_graphics():
 
-    #delay = process_delay_dict()
-    delay = aux_process_dict()
+    delay = process_delay_dict()
+    #delay = aux_process_dict()
 
     for user in delay.keys():
         fig, axs = plt.subplots(figsize=(10, 10))
@@ -119,60 +129,72 @@ def print_graphics():
 
     plt.show()
 
-#print_graphics()
+
+def aux_print_heatmap():
+    delay = aux_process_delay_dict()
+
+    for user in delay:
+        msg = "counts,value,time\n"
+        compare_index = delay[user]
+        #print(compare_index)
+        for data in delay[user]:
+
+            aux_list = delay[user][data]
+
+            x = 1
+            for item in aux_list:
+                msg += str(x) + "," + str(data) + "," + str(item) + "\n"
+                x += 1
+
+        index_numbers = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]
+
+        for x in index_numbers:
+
+            if x not in compare_index.keys():
+                msg += "0,"+str(x)+",\n"
+
+        path = "Data/Individual/"+user+".csv"
+        #print(path)
+        file = open(path, "w")
+        file.write(msg)
+        file.close()
 
 
-def print_heatmap():
-    delay = aux_process_dict()
+def aux_print_global_heatmap():
 
-    user = "1233194515"
-    date = ""
-    msg = "quantity,value,time\n"
+    delay = process_delay_dict()
 
+    for user in delay:
+        msg = "counts,value,time\n"
+        compare_index = delay[user]
 
-    for data in delay:
+        for data in delay[user]:
 
-        x = 1
-        for item in delay[data]:
+            aux_list = delay[user][data]
 
-            msg += str(x)+","+str(data)+","+str(item)+"\n"
-            x += 1
+            x = 1
+            for item in aux_list:
+                msg += str(x) + "," + str(data) + "," + str(item) + "\n"
+                x += 1
 
-    file = open("heat.csv", "w")
-    file.write(msg)
-    file.close()
+        index_numbers = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2]
 
+        for x in index_numbers:
 
-def aux_print():
-    delay = aux_process_dict()
+            if x not in compare_index.keys():
+                msg += "0,"+str(x)+",\n"
 
-    user = 1233194515
-    date = ""
-    msg = "quantity,value,time\n"
-
-    for data in delay[user]:
-
-        aux_list = delay[user][data]
-
-        x = 1
-        for item in aux_list:
-            msg += str(x) + "," + str(data) + "," + str(item) + "\n"
-            x += 1
+        path = "Data/Global/"+str(user)+".csv"
+        print(path)
+        print(msg)
+        file = open(path, "w")
+        file.write(msg)
+        file.close()
 
 
-    print(msg)
-    file = open("heat.csv", "w")
-    file.write(msg)
-    file.close()
+aux_print_heatmap()
 
-
-def draw_heatmap():
-    aux_print()
-
-    data = pd.read_csv("heat.csv")
-    ax = sns.heatmap(data)
+aux_print_global_heatmap()
 
 
 
-
-draw_heatmap()
