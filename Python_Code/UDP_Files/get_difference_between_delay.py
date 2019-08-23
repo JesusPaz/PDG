@@ -141,7 +141,7 @@ def aux_print_heatmap():
 
             aux_list = delay[user][data]
 
-            x = 1
+            x = 0
             for item in aux_list:
                 msg += str(x) + "," + str(data) + "," + str(item) + "\n"
                 x += 1
@@ -154,6 +154,7 @@ def aux_print_heatmap():
                 msg += "0,"+str(x)+",\n"
 
         path = "Data/Individual/"+user+".csv"
+        count_number_values_individual(delay, user)
         #print(path)
         file = open(path, "w")
         file.write(msg)
@@ -163,7 +164,7 @@ def aux_print_heatmap():
 def aux_print_global_heatmap():
 
     delay = process_delay_dict()
-    count_number_values(delay)
+    count_number_values_global(delay)
     for user in delay:
         msg = "counts,value,time\n"
         compare_index = delay[user]
@@ -172,7 +173,7 @@ def aux_print_global_heatmap():
 
             aux_list = delay[user][data]
 
-            x = 1
+            x = 0
             for item in aux_list:
                 msg += str(x) + "," + str(data) + "," + str(item) + "\n"
                 x += 1
@@ -191,7 +192,7 @@ def aux_print_global_heatmap():
         file.close()
 
 
-def count_number_values(delay):
+def count_number_values_global(delay):
 
 
 
@@ -223,6 +224,43 @@ def count_number_values(delay):
         file = open(path, "w")
         file.write(msg)
         file.close()
+
+
+
+def count_number_values_individual(delay, name):
+
+
+
+    for user in delay:
+        dict_count = {}
+        for value in delay[user]:
+            if (int(value*1000) >= 300) & (int(value*1000) <= 800):
+                dict_count[int(value*1000)] = len(delay[user][value])
+
+
+        index = 300
+        while index <=800:
+
+            if index not in dict_count:
+                dict_count[index] = 0
+
+            index += 1
+
+
+
+        dict_count = sorted(dict_count.items())
+
+        msg = "value,counts\n"
+        for value in dict_count:
+            msg += str(value[0]) + "," + str(value[1]) + "\n"
+
+        path = "Data/Individual_Counts/" + str(user) + ".csv"
+
+        file = open(path, "w")
+        file.write(msg)
+        file.close()
+
+
 
 aux_print_heatmap()
 
