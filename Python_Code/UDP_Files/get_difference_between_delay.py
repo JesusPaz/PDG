@@ -163,7 +163,7 @@ def aux_print_heatmap():
 def aux_print_global_heatmap():
 
     delay = process_delay_dict()
-
+    count_number_values(delay)
     for user in delay:
         msg = "counts,value,time\n"
         compare_index = delay[user]
@@ -185,12 +185,44 @@ def aux_print_global_heatmap():
                 msg += "0,"+str(x)+",\n"
 
         path = "Data/Global/"+str(user)+".csv"
-        print(path)
-        print(msg)
+
         file = open(path, "w")
         file.write(msg)
         file.close()
 
+
+def count_number_values(delay):
+
+
+
+    for user in delay:
+        dict_count = {}
+        for value in delay[user]:
+            if (int(value*1000) >= 300) & (int(value*1000) <= 800):
+                dict_count[int(value*1000)] = len(delay[user][value])
+
+
+        index = 300
+        while index <=800:
+
+            if index not in dict_count:
+                dict_count[index] = 0
+
+            index += 1
+
+
+
+        dict_count = sorted(dict_count.items())
+
+        msg = "value,counts\n"
+        for value in dict_count:
+            msg += str(value[0]) + "," + str(value[1]) + "\n"
+
+        path = "Data/Global_Counts/" + str(user) + ".csv"
+
+        file = open(path, "w")
+        file.write(msg)
+        file.close()
 
 aux_print_heatmap()
 
