@@ -82,17 +82,20 @@ def return_all_delay():
 
     query = get_all_delay()
     dict_beats = {}
+    x = 0
     for item in query:
 
         date = item[0]
         key = str(getattr(date, 'year'))+"/"+str(getattr(date, 'month'))+"/"+str(getattr(date, 'day')) + "_" + str(item[1])
-        dict_beats[key] = item
+        dict_beats[x] = item
+        x+=1
 
     return dict_beats
 
 def find_value_total_delay():
 
     delay_list = return_all_delay()
+    print(delay_list)
     value_delay = {}
     # Delay using librosa library
     x, sr = librosa.load('audio/salsa_loop_82bpm.mp3')
@@ -101,6 +104,7 @@ def find_value_total_delay():
     beat_real_times = find_beat_time_from_bpm(82, 30)
     print("----------------------------")
     print(beat_real_times)
+    beat_times = beat_real_times
     for item in delay_list:
         print(item)
         delta_list = []
@@ -113,9 +117,9 @@ def find_value_total_delay():
                 extra_index = y
                 if (index_beat_list+y) < len(beat_times):
 
-                    if abs(float(delay_beats[i])-float(beat_times[index_beat_list+y]))<0.2:
+                    if abs(float(delay_beats[i])-float(beat_times[index_beat_list+y]))<0.35:
                         #print(abs(float(delay_beats[i])-float(beat_times[index_beat_list+y])))
-                        delta_list.append(round(float(delay_beats[i])-float(beat_times[index_beat_list+y]), 2))
+                        delta_list.append(abs(round(float(delay_beats[i])-float(beat_times[index_beat_list+y]), 2)))
                         break
 
             index_beat_list = index_beat_list + extra_index
@@ -150,7 +154,7 @@ def write_delay_deltas():
 
     for item in delta_delay:
 
-        output += item+"_"+" ".join(str(e) for e in delta_delay[item])+"\n"
+        output += str(item)+"_"+" ".join(str(e) for e in delta_delay[item])+" \n"
 
     file = open("delay.txt","w")
     file.write(output)

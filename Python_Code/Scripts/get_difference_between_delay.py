@@ -1,9 +1,6 @@
 import pymysql
 import matplotlib.pyplot as plt
 import collections
-import numpy as np
-import seaborn as sns
-import pandas as pd
 
 def get_all_delays():
     connection = pymysql.connect("127.0.0.1",
@@ -74,10 +71,10 @@ def calculate_repetitions_delay_user(new_deltas, actual_deltas):
 def find_space_between_data(list_string):
     array_data = list_string.split(" ")
     list_return = []
-
+    gap = 0.051
     for x in range(0, len(array_data)):
         if (x + 1) < len(array_data):
-            delta = float(array_data[x + 1]) - float(array_data[x])
+            delta = (float(array_data[x + 1]) + gap) - (float(array_data[x]) + gap)
             list_aux = []
             list_aux.append(round(delta, 3))
             list_aux.append(float(array_data[x]))
@@ -153,7 +150,7 @@ def aux_print_heatmap():
             if x not in compare_index.keys():
                 msg += "0,"+str(x)+",\n"
 
-        path = "Data/Individual/"+user+".csv"
+        path = "../Jupyter_Files/Data/Individual/"+user+".csv"
         count_number_values_individual(delay, user)
         #print(path)
         file = open(path, "w")
@@ -185,7 +182,7 @@ def aux_print_global_heatmap():
             if x not in compare_index.keys():
                 msg += "0,"+str(x)+",\n"
 
-        path = "Data/Global/"+str(user)+".csv"
+        path = "../Jupyter_Files/Data/Global/"+str(user)+".csv"
 
         file = open(path, "w")
         file.write(msg)
@@ -219,7 +216,7 @@ def count_number_values_global(delay):
         for value in dict_count:
             msg += str(value[0]) + "," + str(value[1]) + "\n"
 
-        path = "Data/Global_Counts/" + str(user) + ".csv"
+        path = "../Jupyter_Files/Data/Global_Counts/" + str(user) + ".csv"
 
         file = open(path, "w")
         file.write(msg)
@@ -254,7 +251,7 @@ def count_number_values_individual(delay, name):
         for value in dict_count:
             msg += str(value[0]) + "," + str(value[1]) + "\n"
 
-        path = "Data/Individual_Counts/" + str(user) + ".csv"
+        path = "../Jupyter_Files/Data/Individual_Counts/" + str(user) + ".csv"
 
         file = open(path, "w")
         file.write(msg)
