@@ -36,7 +36,6 @@ def global_create_dict_list():
     return dict_beats
 
 
-
 def individual_create_dict_list():
     query = get_all_delays()
     dict_beats = {}
@@ -76,6 +75,24 @@ def process_global_delays():
     return return_dict
 
 
+def process_individual_delays():
+    query = individual_create_dict_list()
+    return_dict = {}
+    for user in query.keys():
+
+        list_gaps = []
+
+        act_delays = query[user].split(" ")
+        act_delays = subs_gap_to_list(0.05, act_delays)
+
+        for beat in act_delays:
+            act_beat = str(int(round(beat - (int(beat/0.7317)*0.7317), 4)*1000))
+            list_gaps.append(act_beat)
+
+        return_dict[user] = list_gaps
+    return return_dict
+
+
 def write_global_gaps():
     delay = process_global_delays()
     msg = ""
@@ -83,6 +100,15 @@ def write_global_gaps():
         msg += str(user)+"_"+" ".join(delay[user])+"\n"
 
     file = open("../Jupyter_Files/Data/Global_Hw/gap_hw.txt","w")
+    file.write(msg)
+    file.close()
+
+    delay = process_individual_delays()
+    msg = ""
+    for user in delay:
+        msg += str(user) + "_" + " ".join(delay[user]) + "\n"
+
+    file = open("../Jupyter_Files/Data/Individual_Hw/gap_hw.txt", "w")
     file.write(msg)
     file.close()
 
