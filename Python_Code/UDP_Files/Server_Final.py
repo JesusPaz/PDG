@@ -372,5 +372,6 @@ try:
                             print("Rcv ", aux[0])
                            # write_total_log("Rcv "+str( aux[0]))
                             delay_handler(data)
+
 except KeyboardInterrupt:
     print("caught keyboard interrupt, exiting")
