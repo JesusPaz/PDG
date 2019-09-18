@@ -332,7 +332,7 @@ def start_count(t):
             # >= t-260:
         for evento in pygame.event.get():
 
-            if evento.type == pygame.constants.USEREVENT and current_time >= t-5:
+            if evento.type == pygame.constants.USEREVENT and current_time >= t-2:
 
                 beats_msg = ""
                 cont = 0
