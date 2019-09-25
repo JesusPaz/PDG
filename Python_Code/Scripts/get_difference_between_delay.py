@@ -191,24 +191,24 @@ def aux_print_global_heatmap():
 
 def count_number_values_global(delay):
 
-
-
     for user in delay:
+
         dict_count = {}
         for value in delay[user]:
             if (int(value*1000) >= 300) & (int(value*1000) <= 800):
                 dict_count[int(value*1000)] = len(delay[user][value])
 
+        if user == 1002956450:
+            print(delay[1002956450])
+            print(delay[1143874902])
+            print(dict_count)
 
         index = 300
         while index <=800:
-
             if index not in dict_count:
                 dict_count[index] = 0
 
             index += 1
-
-
 
         dict_count = sorted(dict_count.items())
 
@@ -262,6 +262,8 @@ def count_number_values_individual(delay, name):
 aux_print_heatmap()
 
 aux_print_global_heatmap()
+
+
 
 
 
