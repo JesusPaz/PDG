@@ -2,6 +2,9 @@ import pymysql
 import operator
 import random
 
+## Numero en milisegundos (*1000), bang;
+## 1512, bang;
+
 # Constants
 sharp_dict = {}
 delay_hw_ses = {}
@@ -147,6 +150,12 @@ def final_delay_list(song_annotations, sharp_list):
     shrp_1 = sharp_list[user_1] / (sharp_list[0] + sharp_list[1] + sharp_list[2])
     shrp_2 = sharp_list[user_2] / (sharp_list[0] + sharp_list[1] + sharp_list[2])
 
+    shrp_best_usr_1 = sharp_list[best_user] / (sharp_list[best_user] + sharp_list[user_1])
+    shrp_best_usr_2 = sharp_list[best_user] / (sharp_list[best_user] + sharp_list[user_2])
+    shrp_1_2 = sharp_list[user_1] / (sharp_list[best_user] + sharp_list[user_1])
+    shrp_2_2 = sharp_list[user_2] / (sharp_list[best_user] + sharp_list[user_2])
+
+
     index_beat_list_user_1 = 0
     index_beat_list_user_2 = 0
 
@@ -157,12 +166,12 @@ def final_delay_list(song_annotations, sharp_list):
     start_usr_1 = 0
     start_usr_2 = 0
     for i in range(len(best_beats)):
-            if abs(float(best_beats[i]) - float(usr_1_beats[0])) < 0.35:
+            if abs(float(best_beats[i]) - float(usr_1_beats[0])) < 0.5:
                 start_usr_1 = i
                 break
 
     for i in range(len(best_beats)):
-        if abs(float(best_beats[i]) - float(usr_2_beats[0])) < 0.35:
+        if abs(float(best_beats[i]) - float(usr_2_beats[0])) < 0.5:
             start_usr_2 = i
             break
 
@@ -177,19 +186,27 @@ def final_delay_list(song_annotations, sharp_list):
         for y in range(0, 3):
             extra_index_user_1 = y
             if (index_beat_list_user_1+y) < len(song_annotations[user_1]):
-                if abs(float(best_beats[i])-float(usr_1_beats[index_beat_list_user_1+y]))<0.35:
+                if abs(float(best_beats[i])-float(usr_1_beats[index_beat_list_user_1+y]))<0.5:
                     user_1_value = usr_1_beats[index_beat_list_user_1+y]
                     break
 
         for y in range(0, 3):
             extra_index_user_2 = y
             if (index_beat_list_user_2+y) < len(song_annotations[user_2]):
-                if abs(float(best_beats[i])-float(usr_2_beats[index_beat_list_user_2+y]))<0.35:
+                if abs(float(best_beats[i])-float(usr_2_beats[index_beat_list_user_2+y]))<0.5:
                     user_2_value = usr_2_beats[index_beat_list_user_2+y]
                     break
 
         index_beat_list_user_1 = index_beat_list_user_1 + extra_index_user_1
         index_beat_list_user_2 = index_beat_list_user_2 + extra_index_user_2
+
+        if (user_1_value != 0) and (user_2_value == 0):
+            process_beat = (float(user_1_value) * float(shrp_1_2)) + (float(best_beats[i]) * float(shrp_best_usr_1))
+            triad_list.append(process_beat)
+
+        if (user_1_value == 0) and (user_2_value != 0):
+            process_beat = (float(user_2_value) * float(shrp_2_2)) + (float(best_beats[i]) * float(shrp_best_usr_2))
+            triad_list.append(process_beat)
 
         if (user_1_value != 0) and (user_2_value != 0):
             process_beat = (float(user_1_value) * float(shrp_1)) + (float(user_2_value) * float(shrp_2)) + (float(best_beats[i]) * float(shrp_best))
@@ -343,6 +360,20 @@ def delay_process_5_random_songs():
         print(final_list)
 
 
+def real_beats():
+    beats_list = []
+    act_beat = 0
+    msg = ""
+    while act_beat < 30:
+        beats_list.append(act_beat)
+        act_beat += 0.7317
+        msg += str(act_beat)+"\n"
+    file = open("../Jupyter_Files/Data/Processed_Delay/real_beats.txt", "w")
+    file.write(msg)
+    file.close()
+
+
 delay_process_3_best()
 delay_process_3_worst()
 delay_process_5_random_songs()
+real_beats()
