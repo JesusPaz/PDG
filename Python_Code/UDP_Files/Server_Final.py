@@ -9,13 +9,14 @@ from datetime import datetime, date, time, timedelta
 import pymysql
 
 
-#HOST = "192.168.114.38"  # Standard loopback interface address (localhost)
-HOST = "127.0.0.1"
+HOST = "192.168.114.12"  # Standard loopback interface address (localhost)
+#HOST = "127.0.0.1"
 PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
 
 
 def insert_beat(id_cancion, id_usuario, beats, delay):
-    connection = pymysql.connect("127.0.0.1",
+    connection = pymysql.connect("12"
+                                 "7.0.0.1",
                                  "admin",
                                  "1539321441",
                                  "beatsalsa")

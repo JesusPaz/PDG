@@ -310,20 +310,25 @@ def get_delay_hw(user_date):
             if value != -1:
                 aux_key = key
 
-        return delay_hw_ses[aux_key]
+        if aux_key in delay_hw_ses.keys():
+            return delay_hw_ses[aux_key]
+        else:
+            return 0
 
 
-def delay_process_5_random_songs():
+def delay_process_all_songs():
 
     load_sharp_data()
     load_delay_hw()
-    x = 0
-    number_songs = 5
-    list_songs = []
     actual_songs = get_songs_3_repetitions()
+    x = 0
+    number_songs = len(actual_songs)
+    list_songs = []
+
 
     while x < number_songs:
-        song = actual_songs[random.randint(0, len(actual_songs))][0]
+        song = actual_songs[x][0]
+        print(str(song))
         dict_usrs = {}
         indx = 0
         num_usrs = 3
@@ -340,12 +345,19 @@ def delay_process_5_random_songs():
                                            str(getattr(date, 'month')), str(getattr(date, 'year')))
 
             delay = get_delay_hw(key)
-            dict_usrs[usr] = remove_delay_hw(delay, query[0])
+            # TODO
+            if delay != "":
+                dict_usrs[usr] = remove_delay_hw(delay, query[0])
 
         list_sharp = []
         list_delay = []
         for user in dict_usrs.keys():
-            list_sharp.append(sharp_dict[str(user)])
+
+            # TODO
+            if str(user) in sharp_dict.keys():
+                list_sharp.append(sharp_dict[str(user)])
+            else:
+                list_sharp.append(0)
             list_delay.append(dict_usrs[user])
 
         #final_list = create_final_delay_list(list_delay, list_sharp)
@@ -373,7 +385,7 @@ def real_beats():
     file.close()
 
 
-delay_process_3_best()
-delay_process_3_worst()
-delay_process_5_random_songs()
-real_beats()
+#delay_process_3_best()
+#delay_process_3_worst()
+delay_process_all_songs()
+#real_beats()
