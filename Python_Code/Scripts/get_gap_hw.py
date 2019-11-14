@@ -113,3 +113,4 @@ def write_global_gaps():
     file.close()
 
 write_global_gaps()
+print("End of Get gap hw")

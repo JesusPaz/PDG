@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ae606f48-b0ae-471a-baa6-a7b24a278d72" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Python_Code.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/.idea/Jupyter_Files.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/324.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/350.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/398.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/411.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/418.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/431.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/445.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/464.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/470.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/479.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/494.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/506.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/511.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/519.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/540.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/547.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/585.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/599.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/600.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/629.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/632.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/634.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/637.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/648.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/671.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/721.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Spectrogram_plots.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Untitled.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Move_txt_and_wav.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/SesTotal.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/UDP_Files.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UDP_Files/log_bad_beat.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Global_Hw/gap_hw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Global_Hw/gap_hw.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Individual_Hw/gap_hw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Individual_Hw/gap_hw.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/313.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/313.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/317.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/317.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/339.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/339.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/346.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/346.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/347.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/347.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/362.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/362.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/365.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/365.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/368.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/368.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/380.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/380.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/382.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/382.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/388.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/388.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/390.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/390.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/391.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/391.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/394.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/394.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/396.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/396.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/404.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/404.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/406.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/406.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/410.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/410.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/432.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/432.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/436.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/436.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/438.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/438.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/442.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/442.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/453.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/453.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/466.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/466.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/467.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/467.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/469.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/469.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/492.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/492.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/499.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/499.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/504.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/504.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/520.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/520.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/526.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/526.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/528.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/528.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/539.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/539.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/542.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/542.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/552.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/552.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/558.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/558.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/591.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/591.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/603.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/603.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/613.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/613.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/625.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/625.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/638.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/638.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/639.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/639.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/674.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/674.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/699.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/699.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/708.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/708.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/716.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/716.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/719.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/719.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/728.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/728.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/731.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/731.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/delay_hw_ses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/delay_hw_ses.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Delay_Processing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Delay_Processing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Heatmap + KDE.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Heatmap + KDE.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/IoI-Plots.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/IoI-Plots.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Create_delay_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Create_delay_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/find_gap.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/find_gap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/get_difference_between_delay.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/get_difference_between_delay.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/get_gap_hw.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/get_gap_hw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UDP_Files/Server_Final.py" beforeDir="false" afterPath="$PROJECT_DIR$/UDP_Files/Server_Final.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/UDP_Files/Server_Final.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
+              <folding>
+                <element signature="e#236#251#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>TODO</find>
+      <find>elay != &quot;&quot;:</find>
+      <find>delay != &quot;&quot;</find>
+      <find>get_delay_hw</find>
+      <find>print</find>
+      <find>Data/Global/</find>
+      <find>((cad is not None) and (len(cad) is not 0)):</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Jesus Paz &lt;jeherpabo@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Scripts/efreferf.py" />
+        <option value="$PROJECT_DIR$/Scripts/Move_txt_and_wav.py" />
+        <option value="$PROJECT_DIR$/Scripts/Create_delay_list.py" />
+        <option value="$PROJECT_DIR$/Scripts/find_gap.py" />
+        <option value="$PROJECT_DIR$/Scripts/get_gap_hw.py" />
+        <option value="$PROJECT_DIR$/Scripts/get_difference_between_delay.py" />
+        <option value="$PROJECT_DIR$/Scripts/Delay_Processing.py" />
+        <option value="$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py" />
+        <option value="$PROJECT_DIR$/UDP_Files/Server_Final.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Python_Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Python_Code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Python_Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Python_Code" type="462c0819:PsiDirectoryNode" />
+              <item name="UDP_Files" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.Server_Final (1)">
+    <configuration name="Move_txt_and_wav" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Python_Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/Move_txt_and_wav.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Server_Final (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Python_Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UDP_Files" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UDP_Files/Server_Final.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Server_Final" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Python_Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UDP_Files/Server&amp;Client" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/UDP_Files/Server&amp;Client/Server_Final.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="get_difference_between_delay" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Python_Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/get_difference_between_delay.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="process_data_apply_dl_hw" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Python_Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Server_Final (1)" />
+        <item itemvalue="Python.Server_Final" />
+        <item itemvalue="Python.get_difference_between_delay" />
+        <item itemvalue="Python.process_data_apply_dl_hw" />
+        <item itemvalue="Python.Move_txt_and_wav" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ae606f48-b0ae-471a-baa6-a7b24a278d72" name="Default Changelist" comment="" />
+      <created>1572305866318</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572305866318</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Add files to fix the datbase and script to move txt delays and wav songs to find the delay">
+      <created>1572311291088</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1572311291088</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add files to fix the datbase and script to move txt delays and wav songs to find the delay" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add files to fix the datbase and script to move txt delays and wav songs to find the delay" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Scripts/Check_bad_beats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Create_delay_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="155" lean-forward="true" selection-start-line="155" selection-end-line="155" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Move_txt_and_wav.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/get_gap_hw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="115" column="24" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Delay_Processing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="761" column="28" selection-start-line="761" selection-start-column="28" selection-end-line="761" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/gap_counts.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="369" column="39" selection-start-line="369" selection-start-column="39" selection-end-line="369" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/get_difference_between_delay.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="116" column="29" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/find_gap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="115" column="35" selection-start-line="115" selection-start-column="35" selection-end-line="115" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UDP_Files/Server&amp;Client/Server_Final.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Find_error_checksum_databeats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="149" column="13" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UDP_Files/Server_Final.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
+          <folding>
+            <element signature="e#236#251#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

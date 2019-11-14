@@ -310,6 +310,7 @@ def get_delay_hw(user_date):
             if value != -1:
                 aux_key = key
 
+        # TODO
         if aux_key in delay_hw_ses.keys():
             return delay_hw_ses[aux_key]
         else:
@@ -328,7 +329,7 @@ def delay_process_all_songs():
 
     while x < number_songs:
         song = actual_songs[x][0]
-        print(str(song))
+        # print(str(song))
         dict_usrs = {}
         indx = 0
         num_usrs = 3
@@ -348,6 +349,8 @@ def delay_process_all_songs():
             # TODO
             if delay != "":
                 dict_usrs[usr] = remove_delay_hw(delay, query[0])
+            if delay == 0:
+                print(str(usr)+" Not found in delay")
 
         list_sharp = []
         list_delay = []
@@ -358,6 +361,7 @@ def delay_process_all_songs():
                 list_sharp.append(sharp_dict[str(user)])
             else:
                 list_sharp.append(0)
+                print(str(user)+ " Not found in sharp")
             list_delay.append(dict_usrs[user])
 
         #final_list = create_final_delay_list(list_delay, list_sharp)
@@ -366,10 +370,10 @@ def delay_process_all_songs():
         file = open("../Jupyter_Files/Data/Processed_Songs/"+str(song)+".txt", "w")
         msg = ""
         for beat in final_list:
-            msg += str(beat)+"\n"
+            msg += str(int(beat*1000))+", bang;\n"
         file.write(msg)
         file.close()
-        print(final_list)
+        # print(final_list)
 
 
 def real_beats():

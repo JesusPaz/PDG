@@ -15,8 +15,7 @@ PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
 
 
 def insert_beat(id_cancion, id_usuario, beats, delay):
-    connection = pymysql.connect("12"
-                                 "7.0.0.1",
+    connection = pymysql.connect("127.0.0.1",
                                  "admin",
                                  "1539321441",
                                  "beatsalsa")
@@ -38,7 +37,7 @@ def insert_beat(id_cancion, id_usuario, beats, delay):
 
 
 def sum_beats(cad):
-    if ((cad is not None) and (len(cad) is not 0)):
+    if ((cad != None) and (len(cad) != 0)):
         arr = cad.split(" ")
         suma = 0.0
         for x in arr:

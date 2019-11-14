@@ -1,0 +1,8 @@
+1575, bang;
+1876, bang;
+2454, bang;
+3012, bang;
+3223, bang;
+3500, bang;
+4040, bang;
+4281, bang;

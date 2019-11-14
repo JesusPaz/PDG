@@ -198,10 +198,10 @@ def count_number_values_global(delay):
             if (int(value*1000) >= 300) & (int(value*1000) <= 800):
                 dict_count[int(value*1000)] = len(delay[user][value])
 
-        if user == 1002956450:
-            print(delay[1002956450])
-            print(delay[1143874902])
-            print(dict_count)
+        # if user == 1002956450:
+            # print(delay[1002956450])
+            # print(delay[1143874902])
+            # print(dict_count)
 
         index = 300
         while index <=800:
@@ -258,11 +258,9 @@ def count_number_values_individual(delay, name):
         file.close()
 
 
-
 aux_print_heatmap()
-
 aux_print_global_heatmap()
-
+print("End of get diff btw hw")
 
 
 

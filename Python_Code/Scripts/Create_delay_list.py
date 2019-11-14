@@ -95,18 +95,18 @@ def return_all_delay():
 def find_value_total_delay():
 
     delay_list = return_all_delay()
-    print(delay_list)
+    # print(delay_list)
     value_delay = {}
     # Delay using librosa library
     x, sr = librosa.load('audio/salsa_loop_82bpm.mp3')
     tempo, beat_times = librosa.beat.beat_track(x, sr=sr, start_bpm=82, units='time')
-    print(beat_times)
+    # print(beat_times)
     beat_real_times = find_beat_time_from_bpm(82, 30)
-    print("----------------------------")
-    print(beat_real_times)
+    # print("----------------------------")
+    # print(beat_real_times)
     beat_times = beat_real_times
     for item in delay_list:
-        print(item)
+        # print(item)
         delta_list = []
         delay_beats = delay_list[item][2].split(" ")
         index_beat_list = 0
@@ -161,4 +161,5 @@ def write_delay_deltas():
     file.close()
 
 write_delay_deltas()
+print("End of Create delay list")
 

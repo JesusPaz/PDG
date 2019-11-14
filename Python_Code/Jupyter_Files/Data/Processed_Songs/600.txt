@@ -1,0 +1,17 @@
+4992, bang;
+5753, bang;
+6485, bang;
+7190, bang;
+7934, bang;
+8666, bang;
+9402, bang;
+10148, bang;
+10878, bang;
+11627, bang;
+12341, bang;
+13078, bang;
+13855, bang;
+14591, bang;
+15327, bang;
+16076, bang;
+16792, bang;

@@ -99,13 +99,13 @@ def find_value_total_delay():
             value_delay[item] = delta_list
 
         cont = 0
-        print(value_delay)
+        # print(value_delay)
         for item in value_delay:
 
             cont += len(value_delay[item])
 
-        print(gap)
-        print(cont)
+        # print(gap)
+        # print(cont)
         dict_counts[gap] = cont
         gap += 0.001
 
@@ -124,3 +124,4 @@ def write_counts_file():
 
 
 write_counts_file()
+print("End of Find Gap")
