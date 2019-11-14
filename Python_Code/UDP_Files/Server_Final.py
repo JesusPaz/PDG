@@ -39,7 +39,7 @@ def insert_beat(id_cancion, id_usuario, beats, delay):
 def sum_beats(cad):
     if ((cad != None) and (len(cad) != 0)):
         arr = cad.split(" ")
-        suma = 0.0
+        suma = 0.0cm
         for x in arr:
             try:
                 suma += float(x)

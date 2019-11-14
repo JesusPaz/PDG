@@ -2,113 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae606f48-b0ae-471a-baa6-a7b24a278d72" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Python_Code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/.idea/Jupyter_Files.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/324.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/350.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/398.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/411.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/418.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/431.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/445.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/464.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/470.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/479.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/494.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/506.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/511.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/519.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/540.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/547.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/585.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/599.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/600.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/629.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/632.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/634.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/637.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/648.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/671.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/721.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Spectrogram_plots.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Jupyter_Files/Untitled.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Move_txt_and_wav.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/SesTotal.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/UDP_Files.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UDP_Files/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UDP_Files/log_bad_beat.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Global_Hw/gap_hw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Global_Hw/gap_hw.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Individual_Hw/gap_hw.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Individual_Hw/gap_hw.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/313.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/313.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/317.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/317.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/339.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/339.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/346.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/346.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/347.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/347.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/362.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/362.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/365.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/365.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/368.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/368.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/380.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/380.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/382.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/382.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/388.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/388.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/390.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/390.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/391.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/391.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/394.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/394.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/396.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/396.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/404.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/404.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/406.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/406.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/410.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/410.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/432.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/432.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/436.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/436.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/438.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/438.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/442.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/442.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/453.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/453.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/466.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/466.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/467.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/467.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/469.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/469.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/492.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/492.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/499.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/499.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/504.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/504.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/520.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/520.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/526.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/526.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/528.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/528.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/539.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/539.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/542.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/542.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/552.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/552.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/558.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/558.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/591.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/591.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/603.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/603.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/613.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/613.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/625.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/625.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/638.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/638.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/639.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/639.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/674.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/674.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/699.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/699.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/708.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/708.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/716.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/716.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/719.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/719.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/728.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/728.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/731.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/Processed_Songs/731.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Data/delay_hw_ses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Data/delay_hw_ses.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Delay_Processing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Delay_Processing.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/Heatmap + KDE.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/Heatmap + KDE.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jupyter_Files/IoI-Plots.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/IoI-Plots.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Create_delay_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Create_delay_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/find_gap.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/find_gap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/get_difference_between_delay.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/get_difference_between_delay.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/get_gap_hw.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/get_gap_hw.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UDP_Files/Server_Final.py" beforeDir="false" afterPath="$PROJECT_DIR$/UDP_Files/Server_Final.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -123,10 +16,7 @@
         <entry file="file://$PROJECT_DIR$/UDP_Files/Server_Final.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
-              <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-              <folding>
-                <element signature="e#236#251#0" expanded="true" />
-              </folding>
+              <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -512,10 +402,7 @@
     <entry file="file://$PROJECT_DIR$/UDP_Files/Server_Final.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
-          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-          <folding>
-            <element signature="e#236#251#0" expanded="true" />
-          </folding>
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
         </state>
       </provider>
     </entry>
