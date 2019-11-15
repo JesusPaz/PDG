@@ -371,6 +371,7 @@ def delay_process_all_songs():
         msg = ""
         for beat in final_list:
             msg += str(int(beat*1000))+", bang;\n"
+            #msg += str(beat) + "\n"
         file.write(msg)
         file.close()
         # print(final_list)

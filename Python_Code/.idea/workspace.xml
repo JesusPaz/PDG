@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae606f48-b0ae-471a-baa6-a7b24a278d72" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/UDP_Files/Server_Final.py" beforeDir="false" afterPath="$PROJECT_DIR$/UDP_Files/Server_Final.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Python_Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Python_Code.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/CNN-Spectrogram.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/CNN-Spectrogram.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jupyter_Files/songsLength.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Jupyter_Files/songsLength.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +17,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UDP_Files/Server_Final.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="175">
               <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="371" column="31" lean-forward="true" selection-start-line="371" selection-start-column="31" selection-end-line="372" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,8 +76,8 @@
         <option value="$PROJECT_DIR$/Scripts/get_gap_hw.py" />
         <option value="$PROJECT_DIR$/Scripts/get_difference_between_delay.py" />
         <option value="$PROJECT_DIR$/Scripts/Delay_Processing.py" />
-        <option value="$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py" />
         <option value="$PROJECT_DIR$/UDP_Files/Server_Final.py" />
+        <option value="$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py" />
       </list>
     </option>
   </component>
@@ -75,6 +92,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -85,13 +103,17 @@
             <path>
               <item name="Python_Code" type="b2602c69:ProjectViewProjectNode" />
               <item name="Python_Code" type="462c0819:PsiDirectoryNode" />
+              <item name="Scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Python_Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Python_Code" type="462c0819:PsiDirectoryNode" />
               <item name="UDP_Files" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -110,7 +132,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Server_Final (1)">
+  <component name="RunManager" selected="Python.process_data_apply_dl_hw">
     <configuration name="Move_txt_and_wav" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Python_Code" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -218,10 +240,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.process_data_apply_dl_hw" />
         <item itemvalue="Python.Server_Final (1)" />
         <item itemvalue="Python.Server_Final" />
         <item itemvalue="Python.get_difference_between_delay" />
-        <item itemvalue="Python.process_data_apply_dl_hw" />
         <item itemvalue="Python.Move_txt_and_wav" />
       </list>
     </recent_temporary>
@@ -250,7 +272,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -358,16 +380,6 @@
     <entry file="file://$PROJECT_DIR$/Scripts/gap_counts.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="369" column="39" selection-start-line="369" selection-start-column="39" selection-end-line="369" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/get_difference_between_delay.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -403,6 +415,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/process_data_apply_dl_hw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="371" column="31" lean-forward="true" selection-start-line="371" selection-start-column="31" selection-end-line="372" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
