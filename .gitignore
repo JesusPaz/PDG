@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+Python_Code/Jupyter_Files/Data/Spectrograms/Matrix/
+Python_Code/Jupyter_Files/Data/Spectrograms/FinalDF/
+
 # Distribution / packaging
 .Python
 build/
