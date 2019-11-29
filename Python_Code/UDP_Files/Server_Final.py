@@ -9,7 +9,7 @@ from datetime import datetime, date, time, timedelta
 import pymysql
 
 
-HOST = "192.168.114.12"  # Standard loopback interface address (localhost)
+HOST = "192.168.113.12"  # Standard loopback interface address (localhost)
 #HOST = "127.0.0.1"
 PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
 
@@ -39,7 +39,7 @@ def insert_beat(id_cancion, id_usuario, beats, delay):
 def sum_beats(cad):
     if ((cad != None) and (len(cad) != 0)):
         arr = cad.split(" ")
-        suma = 0.0cm
+        suma = 0.0
         for x in arr:
             try:
                 suma += float(x)
