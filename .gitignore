@@ -107,3 +107,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+Python_Code/Jupyter_Files/Data/Spectrograms/Matrix/
+Python_Code/Jupyter_Files/Data/Spectrograms/FinalData/
+
