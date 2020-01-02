@@ -9,8 +9,8 @@ from datetime import datetime, date, time, timedelta
 import pymysql
 
 
-HOST = "192.168.113.12"  # Standard loopback interface address (localhost)
-#HOST = "127.0.0.1"
+#HOST = "192.168.114.12"  # Standard loopback interface address (localhost)
+HOST = "127.0.0.1"
 PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
 
 
