@@ -11,6 +11,9 @@ Python_Code/Jupyter_Files/Data/Spectrograms/FinalDF/
 
 # Distribution / packaging
 .Python
+.idea/
+.ipynb_checkpoints/
+venv/
 build/
 develop-eggs/
 dist/
