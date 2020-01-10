@@ -52,7 +52,8 @@ def find_beat_time_from_bpm(bpm, length_song):
 def process_delay_using_gap(gap, delay):
     list_processed = []
     for x in delay:
-        list_processed.append(abs(float(x) - gap))
+        if x != "":
+            list_processed.append(abs(float(x) - gap))
 
     return list_processed
 
