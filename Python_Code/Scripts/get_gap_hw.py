@@ -50,7 +50,8 @@ def individual_create_dict_list():
 def subs_gap_to_list(gap, list):
     return_list = []
     for x in list:
-        return_list.append(abs(float(x)-gap))
+        if x != "":
+            return_list.append(abs(float(x)-gap))
 
     return return_list
 
