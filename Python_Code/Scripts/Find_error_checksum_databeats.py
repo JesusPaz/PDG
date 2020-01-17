@@ -1,4 +1,5 @@
 import pymysql
+import io
 
 all_id = {}
 
@@ -66,25 +67,40 @@ def find_id_to_name(id):
             sql = "SELECT `ID_CANCION` FROM `despacho_cancion` WHERE `NOMBRE_CANCION`=%s"
             cursor.execute(sql, id)
             return cursor.fetchone()[0]
-
+            
     finally:
         connection.close()
 
 
 def read_txt():
     beats = {}
-    archivo = open("SesTotal.txt", "r")
-    for linea in archivo.readlines():
+    archivo = io.open("SesTotal.txt", 'r', encoding='utf8')
+    # for linea in archivo.readlines():
+
+    #     msg = linea
+    #     cont = linea.find("save")
+
+    #     if cont is not -1:
+    #         aux = msg[cont:].split(";")
+    #         print(aux[1].split(".")[0])
+    #         new_id = find_id_to_name(aux[1].split(".")[0])
+    #         aux[1] = new_id
+    #         beats[str(new_id) + "_" + aux[2]] = aux[1:]
+
+    linea = archivo.readline()
+    while linea:
 
         msg = linea
         cont = linea.find("save")
 
         if cont is not -1:
             aux = msg[cont:].split(";")
-
+            print(aux[1].split(".")[0])
             new_id = find_id_to_name(aux[1].split(".")[0])
             aux[1] = new_id
             beats[str(new_id) + "_" + aux[2]] = aux[1:]
+        
+        linea = archivo.readline()
 
     archivo.close()
 
