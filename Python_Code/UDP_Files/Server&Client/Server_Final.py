@@ -9,7 +9,7 @@ from datetime import datetime, date, time, timedelta
 import pymysql
 
 
-#HOST = "192.168.114.38"  # Standard loopback interface address (localhost)
+#HOST = "192.168.114.12"  # Standard loopback interface address (localhost)
 HOST = "127.0.0.1"
 PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
 
@@ -37,7 +37,7 @@ def insert_beat(id_cancion, id_usuario, beats, delay):
 
 
 def sum_beats(cad):
-    if ((cad is not None) and (len(cad) is not 0)):
+    if ((cad != None) and (len(cad) != 0)):
         arr = cad.split(" ")
         suma = 0.0
         for x in arr:
@@ -372,5 +372,6 @@ try:
                             print("Rcv ", aux[0])
                            # write_total_log("Rcv "+str( aux[0]))
                             delay_handler(data)
+
 except KeyboardInterrupt:
     print("caught keyboard interrupt, exiting")
