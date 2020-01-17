@@ -91,9 +91,11 @@ def find_bad_id_repetitions():
     real_repetitions = verification_real_repetitions()
 
     print("List of the wrong repetitions in the table")
+    cont = 0
     for id in ids_despacho:
         if real_repetitions[id] < 3:
             print_all_data(id)
-
+            cont += 1
+    print(cont)
 
 find_bad_id_repetitions()

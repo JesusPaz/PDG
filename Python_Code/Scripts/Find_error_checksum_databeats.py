@@ -75,18 +75,6 @@ def find_id_to_name(id):
 def read_txt():
     beats = {}
     archivo = io.open("SesTotal.txt", 'r', encoding='utf8')
-    # for linea in archivo.readlines():
-
-    #     msg = linea
-    #     cont = linea.find("save")
-
-    #     if cont is not -1:
-    #         aux = msg[cont:].split(";")
-    #         print(aux[1].split(".")[0])
-    #         new_id = find_id_to_name(aux[1].split(".")[0])
-    #         aux[1] = new_id
-    #         beats[str(new_id) + "_" + aux[2]] = aux[1:]
-
     linea = archivo.readline()
     while linea:
 
@@ -95,7 +83,7 @@ def read_txt():
 
         if cont is not -1:
             aux = msg[cont:].split(";")
-            print(aux[1].split(".")[0])
+            #print(aux[1].split(".")[0])
             new_id = find_id_to_name(aux[1].split(".")[0])
             aux[1] = new_id
             beats[str(new_id) + "_" + aux[2]] = aux[1:]
@@ -130,35 +118,37 @@ def update_beats(id_song, id_user, beats):
 
 def check_if_checksum_error():
     real_data = read_txt()
-
+    #print(real_data.keys())
     data = verification_real_repetitions()
 
-    bad_beat = {}
+    bad_beat = 0
     not_found = {}
 
     for x in all_id:
+        
+        #print(str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1]))
 
         if str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1]) in real_data:
 
             sum0 = sum_beats(data[str(x[0]) + "_0"][2])
 
             if real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][3] != str(sum0):
-                bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])] = \
-                    real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4]
-
+                # bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])] = \
+                #     real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4]
+                bad_beat += 1
                 update_beats(str(x[0]), str(data[str(x[0]) + "_0"][1]),
                              real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4])
 
         else:
             not_found[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])] = 0
 
-        if str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1]) in real_data:
+        if (str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1]) in real_data):
             sum1 = sum_beats(data[str(x[0]) + "_1"][2])
 
             if real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1])][3] != str(sum1):
-                bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1])] = \
-                    real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4]
-
+                #bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1])] = 0
+                #bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1])] = real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4]
+                bad_beat += 1
                 update_beats(str(x[0]), str(data[str(x[0]) + "_1"][1]),
                              real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1])][4])
 
@@ -166,13 +156,13 @@ def check_if_checksum_error():
         else:
             not_found[str(x[0]) + "_" + str(data[str(x[0]) + "_1"][1])] = 0
 
-        if str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1]) in real_data:
+        if (str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1]) in real_data):
             sum2 = sum_beats(data[str(x[0]) + "_2"][2])
 
             if real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1])][3] != str(sum2):
-                bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1])] = \
-                    real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4]
-
+                #bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1])] = 0
+                #bad_beat[str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1])] = real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_0"][1])][4]
+                bad_beat += 1
                 update_beats(str(x[0]), str(data[str(x[0]) + "_2"][1]),
                              real_data[str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1])][4])
 
@@ -180,7 +170,7 @@ def check_if_checksum_error():
             not_found[str(x[0]) + "_" + str(data[str(x[0]) + "_2"][1])] = 0
 
     print("TAMAÑO TOTAL")
-    print(len(bad_beat))
+    print(bad_beat)
 
     print("TAMAÑO FALTANTES")
     print(len(not_found))
